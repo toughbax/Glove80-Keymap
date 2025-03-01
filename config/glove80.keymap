@@ -19,6 +19,7 @@
 #define SYMBOLS 2
 
 / {
+
     behaviors {
         // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
         // Configure it as a tap dance, so the first tap (or hold) is a &mo and the second tap is a &to
@@ -31,7 +32,7 @@
             bindings = <&mo 1>, <&to 1>;
         };
 
-        numbers: tap_dance_0 {
+        numbers: numbers_tap_dance {
             compatible = "zmk,behavior-tap-dance";
             label = "LAYER_TAP_DANCE";
             #binding-cells = <0>;
@@ -57,21 +58,19 @@
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
+
         hold_speed_boost: hold_speed_boost {
             compatible = "zmk,behavior-hold";
             label = "HOLD_SPEED_BOOST";
 
             // When held, boost speed.
-
             bindings = <&set_mouse_speed 15>;
 
             // When released, reset speed to default.
-
             release-bindings = <&set_mouse_speed 5>;
         };
 
         // Set mouse speed behavior (optional — you could also do this in mouse keymap entries directly)
-
         set_mouse_speed {
             compatible = "zmk,behavior-mouse-config";
             label = "SET_MOUSE_SPEED";
@@ -147,12 +146,12 @@
 
         Typing-Graphite {
             bindings = <
-&kp F1      &kp F2    &kp F3     &kp F4          &kp F5                                                                                                              &kp F6                 &kp F7              &kp F8             &kp F9     &kp F10
-&kp GRAVE   &kp BSLH  &kp LBKT   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LESS_THAN                                                               &kp GREATER_THAN  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE     &kp RIGHT_BRACKET  &kp SLASH  &kp MINUS
-&kp TAB     &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                       &kp K             &kp F                  &kp O               &kp U              &kp J      &kp TAB
-&kp LSHFT   &kp N     &kp R      &kp T           &kp S                 &kp G                                                                       &kp Y             &kp H                  &kp A               &kp E              &kp I      &kp RIGHT_SHIFT
-&kp ESC     &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp ESC  &lower    &kp LGUI  &numbers  &kp RSHFT  &kp SEMICOLON     &kp P                  &Comma_Exclamation  &Dot_Question      &kp SQT    &kp PG_UP
-&magic 0 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &kp DEL  &kp LALT  &kp RALT  &kp RET   &kp SPACE                    &kp RIGHT_COMMAND      &kp RIGHT_ALT       &kp RIGHT_CONTROL  &kp MINUS  &kp PG_DN
+&kp F1      &kp F2    &kp F3     &kp F4          &kp F5                                                                                                               &kp F6                 &kp F7              &kp F8             &kp F9     &kp F10
+&kp GRAVE   &kp BSLH  &kp LBKT   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LESS_THAN                                                                &kp GREATER_THAN  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE     &kp RIGHT_BRACKET  &kp SLASH  &kp MINUS
+&kp TAB     &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                        &kp K             &kp F                  &kp O               &kp U              &kp J      &kp TAB
+&kp LSHFT   &kp N     &kp R      &kp T           &kp S                 &kp G                                                                        &kp Y             &kp H                  &kp A               &kp E              &kp I      &kp RIGHT_SHIFT
+&kp ESC     &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp ESC  &lower    &kp LGUI  &kp RCTRL  &kp RSHFT  &kp SEMICOLON     &kp P                  &Comma_Exclamation  &Dot_Question      &kp SQT    &kp PG_UP
+&magic 0 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &kp DEL  &kp LALT  &kp RALT  &kp RET    &kp SPACE                    &kp RIGHT_COMMAND      &kp RIGHT_ALT       &kp RIGHT_CONTROL  &kp MINUS  &kp PG_DN
             >;
         };
 
@@ -191,12 +190,12 @@
 
         MouseMovement {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                                                  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                                                                                     &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                             &trans          &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                             &msc SCRL_UP    &trans          &mmv MOVE_UP    &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                             &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &hold_speed_boost  &trans          &trans          &mmv MOVE_DOWN  &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                             &mkp LCLK       &mkp MCLK       &mkp RCLK        &trans  &trans
             >;
         };
 
