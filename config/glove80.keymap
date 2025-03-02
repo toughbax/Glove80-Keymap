@@ -19,7 +19,6 @@
 #define SYMBOLS 2
 
 / {
-
     behaviors {
         // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
         // Configure it as a tap dance, so the first tap (or hold) is a &mo and the second tap is a &to
@@ -58,19 +57,21 @@
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
-
         hold_speed_boost: hold_speed_boost {
             compatible = "zmk,behavior-hold";
             label = "HOLD_SPEED_BOOST";
 
             // When held, boost speed.
+
             bindings = <&set_mouse_speed 15>;
 
             // When released, reset speed to default.
+
             release-bindings = <&set_mouse_speed 5>;
         };
 
         // Set mouse speed behavior (optional — you could also do this in mouse keymap entries directly)
+
         set_mouse_speed {
             compatible = "zmk,behavior-mouse-config";
             label = "SET_MOUSE_SPEED";
@@ -238,7 +239,7 @@
 &none        &none            &none            &none            &none            &none                                                             &none  &none  &none  &none  &none  &none
 &trans       &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                   &none  &none  &none  &none  &none  &none
 &bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                   &none  &none  &none  &none  &none  &bootloader
-&reset       &none            &none            &none            &none            &none            &bt_2  &bt_3  &none         &none  &none  &none  &none  &none  &none  &none  &none  &reset
+&sys_reset   &none            &none            &none            &none            &none            &bt_2  &bt_3  &none         &none  &none  &none  &none  &none  &none  &none  &none  &sys_reset
 &none        &none            &none            &none            &none                             &bt_0  &bt_1  &out OUT_USB  &none  &none  &none         &none  &none  &none  &none  &none
             >;
         };
