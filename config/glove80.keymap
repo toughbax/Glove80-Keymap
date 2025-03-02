@@ -33,7 +33,7 @@
 
         numbers: numbers_tap_dance {
             compatible = "zmk,behavior-tap-dance";
-            label = "LAYER_TAP_DANCE";
+            label = "NUMBERS_TAP_DANCE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&mo NUMBERS>, <&to NUMBERS>;
@@ -57,25 +57,7 @@
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
-        hold_speed_boost: hold_speed_boost {
-            compatible = "zmk,behavior-hold";
-            label = "HOLD_SPEED_BOOST";
-
-            // When held, boost speed.
-
-            bindings = <&set_mouse_speed 15>;
-
-            // When released, reset speed to default.
-
-            release-bindings = <&set_mouse_speed 5>;
-        };
-
         // Set mouse speed behavior (optional — you could also do this in mouse keymap entries directly)
-
-        set_mouse_speed {
-            compatible = "zmk,behavior-mouse-config";
-            label = "SET_MOUSE_SPEED";
-        };
     };
 
     macros {
@@ -191,12 +173,12 @@
 
         MouseMovement {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                                                                     &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                             &trans          &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                             &msc SCRL_UP    &trans          &mmv MOVE_UP    &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                             &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &hold_speed_boost  &trans          &trans          &mmv MOVE_DOWN  &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                             &mkp LCLK       &mkp MCLK       &mkp RCLK        &trans  &trans
+&trans  &trans  &trans  &trans  &trans                                                                          &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans          &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &msc SCRL_UP    &trans          &mmv MOVE_UP    &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &none   &trans          &trans          &mmv MOVE_DOWN  &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                  &mkp LCLK       &mkp MCLK       &mkp RCLK        &trans  &trans
             >;
         };
 
