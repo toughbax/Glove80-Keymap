@@ -1,0 +1,20 @@
+/ {
+    behaviors {
+        hold_speed_boost: hold_speed_boost {
+            compatible = "zmk,behavior-hold";
+            label = "HOLD_SPEED_BOOST";
+
+            // When held, boost speed.
+            bindings = <&set_mouse_speed 15>;
+
+            // When released, reset speed to default.
+            release-bindings = <&set_mouse_speed 5>;
+        };
+
+        // Set mouse speed behavior (optional — you could also do this in mouse keymap entries directly)
+        set_mouse_speed {
+            compatible = "zmk,behavior-mouse-config";
+            label = "SET_MOUSE_SPEED";
+        };
+    };
+};
