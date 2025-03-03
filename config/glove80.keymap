@@ -57,6 +57,16 @@
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
+        LayerTap: LayerTap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYERTAP";
+            bindings = <&mo>, <&tog>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            hold-while-undecided;
+        };
+
         // Set mouse speed behavior (optional — you could also do this in mouse keymap entries directly)
     };
 
@@ -96,11 +106,32 @@
             bindings = <&out OUT_BLE &bt BT_SEL 3>;
         };
 
-        mmv_ul: mmv_ul {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &mmv MACRO_PLACEHOLDER &macro_param_1to1 &mmv MACRO_PLACEHOLDER>;
-            label = "MMV_UL";
+        WildCard: WildCard {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LG(LA(LC(F7))))>;
+            label = "WILDCARD";
+        };
+
+        LeaderKey: LeaderKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LA(LC(COMMA)))>;
+            label = "LEADERKEY";
+        };
+
+        AlfredKey: AlfredKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(SPACE)>;
+            label = "ALFREDKEY";
+        };
+
+        RayCastKey: RayCastKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(SPACE)>;
+            label = "RAYCASTKEY";
         };
     };
 
@@ -121,12 +152,12 @@
 
         Typing-Graphite {
             bindings = <
-&kp F1      &kp F2    &kp F3     &kp F4          &kp F5                                                                                                                  &kp F6                 &kp F7              &kp F8             &kp F9     &kp F10
-&kp GRAVE   &kp BSLH  &kp LBKT   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LESS_THAN                                                                   &kp GREATER_THAN  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE     &kp RIGHT_BRACKET  &kp SLASH  &kp MINUS
-&kp TAB     &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                           &kp K             &kp F                  &kp O               &kp U              &kp J      &kp TAB
-&kp LSHFT   &kp N     &kp R      &kp T           &kp S                 &kp G                                                                           &kp Y             &kp H                  &kp A               &kp E              &kp I      &kp RIGHT_SHIFT
-&kp ESC     &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp ESC  &mouse    &kp LGUI  &numbers  &kp RSHFT      &kp SEMICOLON     &kp P                  &Comma_Exclamation  &Dot_Question      &kp SQT    &kp PG_UP
-&magic 0 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &mo 4    &kp LALT  &kp RALT  &kp RET   &kp BACKSPACE                    &kp RIGHT_COMMAND      &kp RIGHT_ALT       &kp RIGHT_CONTROL  &kp MINUS  &kp PG_DN
+&kp F1      &kp F2    &kp F3     &kp F4          &kp F5                                                                                                                              &kp F6                 &kp F7              &kp F8             &kp F9     &kp F10
+&kp GRAVE   &kp BSLH  &kp LBKT   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LESS_THAN                                                                               &kp GREATER_THAN  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE     &kp RIGHT_BRACKET  &kp SLASH  &kp MINUS
+&kp TAB     &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                                       &kp K             &kp F                  &kp O               &kp U              &kp J      &kp TAB
+&kp LSHFT   &kp N     &kp R      &kp T           &kp S                 &kp G                                                                                       &kp Y             &kp H                  &kp A               &kp E              &kp I      &kp RIGHT_SHIFT
+&kp ESC     &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp ESC  &LayerTap 4 4  &kp LGUI    &LayerTap 1 1  &kp RSHFT      &kp SEMICOLON     &kp P                  &Comma_Exclamation  &Dot_Question      &kp SQT    &kp PG_UP
+&magic 0 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &kp TAB  &kp LALT       &LeaderKey  &LayerTap 5 5  &kp BACKSPACE                    &kp RIGHT_COMMAND      &kp RIGHT_ALT       &kp RIGHT_CONTROL  &kp MINUS  &kp PG_DN
             >;
         };
 
