@@ -10,8 +10,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
 #define DEFAULT 0
@@ -23,34 +21,18 @@
         // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
         // Configure it as a tap dance, so the first tap (or hold) is a &mo and the second tap is a &to
 
-        mouse: tap_dance_0 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "MOUSE_TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo 4>, <&to 4>;
-        };
-
-        numbers: numbers_tap_dance {
-            compatible = "zmk,behavior-tap-dance";
-            label = "NUMBERS_TAP_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo NUMBERS>, <&to NUMBERS>;
-        };
-
-        Comma_Exclamation: Comma_Exclamation {
+        ComExcl: ComExcl {
             compatible = "zmk,behavior-mod-morph";
-            label = "COMMA_EXCLAMATION";
+            label = "COMEXCL";
             bindings = <&kp COMMA>, <&kp EXCLAMATION>;
 
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
-        Dot_Question: Dot_Question {
+        DotQues: DotQues {
             compatible = "zmk,behavior-mod-morph";
-            label = "DOT_QUESTION";
+            label = "DOTQUES";
             bindings = <&kp PERIOD>, <&kp QUESTION>;
 
             #binding-cells = <0>;
@@ -147,17 +129,41 @@
     /* Custom Defined Behaviors */
     /* Automatically generated keymap */
 
+    combos {
+        compatible = "zmk,combos";
+
+        AlfredKeyRight {
+            bindings = <&AlfredKey>;
+            key-positions = <75 73>;
+        };
+
+        AlfredKeyLeft {
+            bindings = <&AlfredKey>;
+            key-positions = <68 73>;
+        };
+
+        RayCastRight {
+            bindings = <&RayCastKey>;
+            key-positions = <76 73>;
+        };
+
+        RayCastLeft {
+            bindings = <&RayCastKey>;
+            key-positions = <67 73>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         Typing-Graphite {
             bindings = <
-&kp F1      &kp F2    &kp F3     &kp F4          &kp F5                                                                                                                              &kp F6                 &kp F7              &kp F8             &kp F9     &kp F10
-&kp GRAVE   &kp BSLH  &kp LBKT   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LESS_THAN                                                                               &kp GREATER_THAN  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE     &kp RIGHT_BRACKET  &kp SLASH  &kp MINUS
-&kp TAB     &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                                       &kp K             &kp F                  &kp O               &kp U              &kp J      &kp TAB
-&kp LSHFT   &kp N     &kp R      &kp T           &kp S                 &kp G                                                                                       &kp Y             &kp H                  &kp A               &kp E              &kp I      &kp RIGHT_SHIFT
-&kp ESC     &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp ESC  &LayerTap 4 4  &kp LGUI    &LayerTap 1 1  &kp RSHFT      &kp SEMICOLON     &kp P                  &Comma_Exclamation  &Dot_Question      &kp SQT    &kp PG_UP
-&magic 0 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &kp TAB  &kp LALT       &LeaderKey  &LayerTap 5 5  &kp BACKSPACE                    &kp RIGHT_COMMAND      &kp RIGHT_ALT       &kp RIGHT_CONTROL  &kp MINUS  &kp PG_DN
+&kp F1      &kp F2    &kp F3     &kp F4          &kp F5                                                                                                                                                     &kp F6                 &kp F7           &kp F8             &kp F9     &kp F10
+&kp GRAVE   &kp BSLH  &kp LBKT   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LESS_THAN                                                                                                      &kp GREATER_THAN  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp RIGHT_BRACKET  &kp SLASH  &kp MINUS
+&kp TAB     &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                                                              &kp K             &kp F                  &kp O            &kp U              &kp J      &kp TAB
+&kp LSHFT   &kp N     &kp R      &kp T           &kp S                 &kp G                                                                                                              &kp Y             &kp H                  &kp A            &kp E              &kp I      &kp RIGHT_SHIFT
+&kp ESC     &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp TAB        &LayerTap 4 4  &LayerTap 3 3  &LayerTap 1 1  &kp RSHFT                    &kp SEMICOLON     &kp P                  &ComExcl         &DotQues           &kp SQT    &kp PG_UP
+&magic 0 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &LayerTap 2 2  &kp ESCAPE     &LayerTap 5 5  &LeaderKey     &mt LC(BACKSPACE) BACKSPACE                    &kp RIGHT_COMMAND      &kp RIGHT_ALT    &kp RIGHT_CONTROL  &kp MINUS  &WildCard
             >;
         };
 
@@ -183,29 +189,40 @@
             >;
         };
 
-        Cursor-Content {
+        CursorContent {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                                                            &trans               &trans             &trans            &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans            &trans               &trans             &trans            &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &msc MOVE_Y(10)   &mmv_ul MOVE_X(500)  &mmv MOVE_UP       &mkp RCLK         &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &msc MOVE_Y(-10)  &mmv MOVE_X(-300)    &mmv MOVE_Y(-300)  &mmv MOVE_X(300)  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans            &trans               &trans             &trans            &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                    &mkp LCLK            &mkp MCLK          &mkp RCLK         &trans  &trans
+&trans  &trans  &trans  &trans  &trans                                                                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         MouseMovement {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                                                          &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans          &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &msc SCRL_UP    &trans          &mmv MOVE_UP    &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &none   &trans          &trans          &mmv MOVE_DOWN  &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans                  &mkp LCLK       &mkp MCLK       &mkp RCLK        &trans  &trans
+&trans  &trans     &trans    &trans    &trans                                                                                    &trans          &trans          &trans           &trans  &trans
+&trans  &trans     &trans    &trans    &trans     &trans                                                         &trans          &trans          &trans          &trans           &trans  &trans
+&trans  &trans     &trans    &kp UP    &trans     &kp PAGE_UP                                                    &msc SCRL_UP    &trans          &mmv MOVE_UP    &trans           &trans  &trans
+&trans  &kp EQUAL  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PAGE_DOWN                                                  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
+&trans  &trans     &trans    &trans    &trans     &trans         &trans  &trans  &trans  &trans  &trans  &none   &trans          &trans          &mmv MOVE_DOWN  &trans           &trans  &trans
+&trans  &trans     &trans    &trans    &trans                    &trans  &trans  &trans  &trans  &trans  &trans                  &mkp LCLK       &mkp MCLK       &mkp RCLK        &trans  &trans
             >;
         };
 
         Shortcuts {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                                                                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        Shortcuts2 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                                                                  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
