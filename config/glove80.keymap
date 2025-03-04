@@ -13,7 +13,6 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
-#include <dt-bindings/zmk/rgb_colors.h>
 #define DEFAULT 0
 #define NUMBERS 1
 #define SYMBOLS 2
@@ -178,8 +177,33 @@
             };
     */
 
-
-
+    / {
+        underglow-layer {
+            compatible  = "zmk,underglow-layer";
+            vimMode {
+                bindings = <
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                                  &ug BLUE &ug ___ &ug ___ &ug ___ &ug ___
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                  &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                  &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                  &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___         &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___         &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                    >;
+                layer-id = 11;
+            };
+            numbers {
+                bindings = <
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                                  &ug BLUE &ug ___ &ug ___ &ug ___ &ug ___
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                  &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                  &ug ___ &ug BLUE &ug BLUE &ug BLUE &ug ___ &ug ___
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                  &ug ___ &ug BLUE &ug BLUE &ug BLUE &ug ___ &ug ___
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___ &ug BLUE &ug BLUE &ug BLUE &ug ___ &ug ___
+                    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___         &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___         &ug BLUE &ug GREEN &ug GREEN &ug ___ &ug ___
+                    >;
+                layer-id = 1;
+            };
+        };
+    };      
 
 
     /*
