@@ -158,7 +158,7 @@
         AlfredKey: AlfredKey {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(SPACE)>;
+            bindings = <&kp LA(SPACE)>;
             label = "ALFREDKEY";
         };
 
