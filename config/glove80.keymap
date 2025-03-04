@@ -17,6 +17,7 @@
 #define DEFAULT 0
 #define NUMBERS 1
 #define SYMBOLS 2
+#define NVIM 11
 
 
 
@@ -51,9 +52,9 @@
     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___
     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___         &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___         &ug ___  &ug ___ &ug ___ &ug ___ &ug ___
                 >;
-            layer-id = 11;
+            layer-id = <NUMBERS>;
         };
-        
+
         numbers {
             bindings = <
     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                                  &ug ___  &ug ___   &ug ___   &ug ___ &ug ___
@@ -63,7 +64,7 @@
     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___ &ug BLUE &ug BLUE  &ug BLUE  &ug ___ &ug ___
     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___         &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___         &ug BLUE &ug GREEN &ug GREEN &ug ___ &ug ___
                 >;
-            layer-id = 1;
+            layer-id = <NVIM>;
         };
     };
 };   
