@@ -285,13 +285,13 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            hold-while-undecided;
+            flavor = "tap-preferred";
         };
 
         Delete: Delete {
             compatible = "zmk,behavior-mod-morph";
             label = "DELETE";
-            bindings = <&TapHold LG(DELETE) DELETE>, <&kp LG(DELETE)>;
+            bindings = <&TapHold LA(DELETE) DELETE>, <&kp LG(DELETE)>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
@@ -300,7 +300,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Backspace: Backspace {
             compatible = "zmk,behavior-mod-morph";
             label = "BACKSPACE";
-            bindings = <&TapHold LG(BACKSPACE) BACKSPACE>, <&kp LG(BACKSPACE)>;
+            bindings = <&TapHold LA(BACKSPACE) BACKSPACE>, <&kp LG(BACKSPACE)>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
