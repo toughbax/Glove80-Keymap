@@ -102,6 +102,34 @@
             hold-while-undecided;
         };
 
+        LeaderAlfred: LeaderAlfred {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LEADERALFRED";
+            bindings = <&LeaderKey>, <&AlfredKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
+        };
+
+        LeaderRaycast: LeaderRaycast {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LEADERRAYCAST";
+            bindings = <&LeaderKey>, <&RayCastKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RALT|MOD_LALT)>;
+        };
+
+        LeaderHammerspoon: LeaderHammerspoon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LEADERHAMMERSPOON";
+            bindings = <&LeaderKey>, <&HammerspoonKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL)>;
+            keep-mods = <(MOD_LCTL)>;
+        };
+
         // Set mouse speed behavior (optional — you could also do this in mouse keymap entries directly)
     };
 
@@ -168,6 +196,20 @@
             bindings = <&kp LC(SPACE)>;
             label = "RAYCASTKEY";
         };
+
+        HammerspoonKey: Hammerspoon {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LC(SPACE))>;
+            label = "HAMMERSPOON";
+        };
+
+        Launchers: Launchers {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&LeaderAlfred &LeaderRaycast &LeaderHammerspoon>;
+            label = "LAUNCHERS";
+        };
     };
 
     magic: magic_hold_tap {
@@ -182,29 +224,7 @@
     /* Custom Defined Behaviors */
     /* Automatically generated keymap */
 
-    combos {
-        compatible = "zmk,combos";
-
-        AlfredKeyRight {
-            bindings = <&AlfredKey>;
-            key-positions = <75 73>;
-        };
-
-        AlfredKeyLeft {
-            bindings = <&AlfredKey>;
-            key-positions = <68 73>;
-        };
-
-        RayCastRight {
-            bindings = <&RayCastKey>;
-            key-positions = <76 73>;
-        };
-
-        RayCastLeft {
-            bindings = <&RayCastKey>;
-            key-positions = <67 73>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     /*
     * KEYMAP
@@ -215,12 +235,12 @@
 
         Typing-Graphite {
             bindings = <
-&kp F1       &kp F2    &kp F3     &kp F4          &kp F5                                                                                                                                                     &tog 13                &kp F7           &kp F8             &kp F9     &kp F10
-&kp GRAVE    &kp BSLH  &kp LBKT   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LESS_THAN                                                                                                      &kp GREATER_THAN  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp RIGHT_BRACKET  &kp SLASH  &kp MINUS
-&kp TAB      &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                                                              &kp K             &kp F                  &kp O            &kp U              &kp J      &kp TAB
-&kp LSHFT    &kp N     &kp R      &kp T           &kp S                 &kp G                                                                                                              &kp Y             &kp H                  &kp A            &kp E              &kp I      &kp RIGHT_SHIFT
-&kp ESC      &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp TAB        &LayerTap 6 6  &LayerTap 4 4  &LayerTap 2 2  &kp RSHFT                    &kp SEMICOLON     &kp P                  &ComExcl         &DotQues           &kp SQT    &tog 13
-&magic 12 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &LayerTap 3 3  &kp ESCAPE     &LayerTap 9 9  &LeaderKey     &mt LC(BACKSPACE) BACKSPACE                    &kp RIGHT_COMMAND      &kp RIGHT_ALT    &kp RIGHT_CONTROL  &kp MINUS  &WildCard
+&kp F1       &kp F2    &kp F3     &kp F4          &kp F5                                                                                                                                 &tog 13                &kp F7           &kp F8             &kp F9     &kp F10
+&kp GRAVE    &kp BSLH  &kp LBKT   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LESS_THAN                                                                                  &kp GREATER_THAN  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp RIGHT_BRACKET  &kp SLASH  &kp MINUS
+&kp TAB      &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                                          &kp K             &kp F                  &kp O            &kp U              &kp J      &kp TAB
+&kp LSHFT    &kp N     &kp R      &kp T           &kp S                 &kp G                                                                                          &kp Y             &kp H                  &kp A            &kp E              &kp I      &kp RIGHT_SHIFT
+&kp ESC      &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp TAB  &mo 6       &mo 4  &mo 2       &kp RSHFT                    &kp SEMICOLON     &kp P                  &ComExcl         &DotQues           &kp SQT    &tog 13
+&magic 12 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &mo 3    &kp ESCAPE  &mo 9  &Launchers  &mt LC(BACKSPACE) BACKSPACE                    &kp RIGHT_COMMAND      &kp RIGHT_ALT    &kp RIGHT_CONTROL  &kp MINUS  &WildCard
             >;
         };
 
