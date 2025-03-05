@@ -240,7 +240,7 @@
 &kp TAB      &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                                          &kp K             &kp F                  &kp O            &kp U              &kp J      &kp TAB
 &kp LSHFT    &kp N     &kp R      &kp T           &kp S                 &kp G                                                                                          &kp Y             &kp H                  &kp A            &kp E              &kp I      &kp RIGHT_SHIFT
 &kp ESC      &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp TAB  &mo 6       &mo 4  &mo 2       &kp RSHFT                    &kp SEMICOLON     &kp P                  &ComExcl         &DotQues           &kp SQT    &tog 13
-&magic 12 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &mo 3    &kp ESCAPE  &mo 9  &Launchers  &mt LC(BACKSPACE) BACKSPACE                    &kp RIGHT_COMMAND      &kp RIGHT_ALT    &kp RIGHT_CONTROL  &kp MINUS  &WildCard
+&magic 12 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &mo 3    &kp ESCAPE  &mo 9  &Launchers  &mt BACKSPACE LC(BACKSPACE)                    &kp RIGHT_COMMAND      &kp RIGHT_ALT    &kp RIGHT_CONTROL  &kp MINUS  &WildCard
             >;
         };
 
