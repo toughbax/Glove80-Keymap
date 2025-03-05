@@ -19,6 +19,13 @@
 #define SYMBOLS 2
 #define NVIM 11
 
+
+#define GRN 0x78ff78 //light green
+#define RED 0xff0000 //red
+#define YLW 0xf8bb00 //orange-yellow
+#define BLU 0x00e2ff //teal
+#define PUR 0xd451ff //pale purple
+
 /*
  *    RGB MAPS
 */
@@ -39,19 +46,31 @@
 
 / {
     underglow-layer {
-        compatible = "zmk,underglow-layer";
+        compatible  = "zmk,underglow-layer";
 
-        vim {
+        base {
             bindings = <
-    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                                  &ug BLUE &ug ___ &ug ___ &ug ___ &ug ___
+    &ug GRN &ug GRN &ug GRN &ug GRN &ug ___                                                                  &ug BLUE &ug ___ &ug ___ &ug ___ &ug ___
+    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                  &ug BLU &ug BLU  &ug BLU &ug BLU &ug ___ &ug ___
     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                  &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___
-    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                  &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___
-    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___                                                  &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___
-    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___
+    &ug RED &ug RED &ug RED &ug RED &ug RED &ug ___                                                  &ug ___ &ug ___  &ug ___ &ug ___ &ug ___ &ug ___
+    &ug ___ &ug ___ &ug ___ &ug YLW &ug YLW &ug YLW &ug YLW &ug ___ &ug ___  &ug PUR &ug PUR &ug PUR &ug PUR &ug PUR  &ug ___ &ug ___ &ug ___ &ug ___
     &ug ___ &ug ___ &ug ___ &ug ___ &ug ___         &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___         &ug ___  &ug ___ &ug ___ &ug ___ &ug ___
-            >;
+                >;
+            layer-id = <0>;
+        };
 
-            layer-id = <NUMBERS>;
+
+        nvim {
+            bindings = <
+    &ug YLW &ug YLW &ug YLW &ug YLW &ug ___                                                                  &ug BLUE &ug ___ &ug YLW &ug YLW &ug YLW
+    &ug YLW &ug YLW &ug YLW &ug YLW &ug YLW &ug YLW                                                  &ug BLU &ug BLU  &ug BLU &ug BLU &ug YLW &ug YLW
+    &ug YLW &ug YLW &ug YLW &ug YLW &ug YLW &ug YLW                                                  &ug YLW &ug YLW  &ug YLW &ug YLW &ug YLW &ug YLW
+    &ug RED &ug RED &ug RED &ug RED &ug RED &ug YLW                                                  &ug YLW &ug YLW  &ug YLW &ug YLW &ug YLW &ug YLW
+    &ug YLW &ug ___ &ug ___ &ug YLW &ug YLW &ug YLW &ug YLW &ug ___ &ug ___  &ug PUR &ug PUR &ug PUR &ug PUR &ug PUR  &ug ___ &ug ___ &ug ___ &ug ___
+    &ug ___ &ug ___ &ug ___ &ug ___ &ug ___         &ug ___ &ug ___ &ug ___  &ug ___ &ug ___ &ug ___         &ug ___  &ug ___ &ug ___ &ug ___ &ug ___
+                >;
+            layer-id = <NVIM>;
         };
 
         numbers {
