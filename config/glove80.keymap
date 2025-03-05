@@ -102,28 +102,28 @@
             hold-while-undecided;
         };
 
-        LeaderAlfred: LeaderAlfred {
+        Launchers3: Launchers3 {
             compatible = "zmk,behavior-mod-morph";
-            label = "LEADERALFRED";
+            label = "LAUNCHERS3";
             bindings = <&LeaderKey>, <&AlfredKey>;
 
             #binding-cells = <0>;
             mods = <(MOD_LGUI|MOD_RGUI)>;
         };
 
-        LeaderRaycast: LeaderRaycast {
+        Launchers2: Launchers2 {
             compatible = "zmk,behavior-mod-morph";
-            label = "LEADERRAYCAST";
-            bindings = <&LeaderKey>, <&RayCastKey>;
+            label = "LAUNCHERS2";
+            bindings = <&Launchers3>, <&RayCastKey>;
 
             #binding-cells = <0>;
             mods = <(MOD_RALT|MOD_LALT)>;
         };
 
-        LeaderHammerspoon: LeaderHammerspoon {
+        Launchers: Launchers {
             compatible = "zmk,behavior-mod-morph";
-            label = "LEADERHAMMERSPOON";
-            bindings = <&LeaderKey>, <&HammerspoonKey>;
+            label = "LAUNCHERS";
+            bindings = <&Launchers2>, <&HammerspoonKey>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL)>;
@@ -203,13 +203,6 @@
             bindings = <&kp LA(LC(SPACE))>;
             label = "HAMMERSPOON";
         };
-
-        Launchers: Launchers {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&LeaderAlfred &LeaderRaycast &LeaderHammerspoon>;
-            label = "LAUNCHERS";
-        };
     };
 
     magic: magic_hold_tap {
@@ -240,7 +233,7 @@
 &kp TAB      &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                                          &kp K             &kp F                  &kp O            &kp U              &kp J      &kp TAB
 &kp LSHFT    &kp N     &kp R      &kp T           &kp S                 &kp G                                                                                          &kp Y             &kp H                  &kp A            &kp E              &kp I      &kp RIGHT_SHIFT
 &kp ESC      &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp TAB  &mo 6       &mo 4  &mo 2       &kp RSHFT                    &kp SEMICOLON     &kp P                  &ComExcl         &DotQues           &kp SQT    &tog 13
-&magic 12 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &mo 3    &kp ESCAPE  &mo 9  &Launchers  &mt BACKSPACE LC(BACKSPACE)                    &kp RIGHT_COMMAND      &kp RIGHT_ALT    &kp RIGHT_CONTROL  &kp MINUS  &WildCard
+&magic 12 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &mo 3    &kp ESCAPE  &mo 9  &Launchers  &mt BACKSPACE LA(BACKSPACE)                    &kp RIGHT_COMMAND      &kp RIGHT_ALT    &kp RIGHT_CONTROL  &kp MINUS  &WildCard
             >;
         };
 
@@ -301,34 +294,34 @@
 
         Mouse {
             bindings = <
-&none  &none      &none     &none     &none                                                                                &none             &none              &none              &none  &none
-&none  &none      &none     &none     &none      &none                                                     &none           &none             &none              &none              &none  &none
-&none  &none      &none     &kp UP    &none      &kp PAGE_UP                                               &msc SCRL_UP    &none             &mmv MOVE_Y(400)   &none              &none  &none
-&none  &kp EQUAL  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PAGE_DOWN                                             &msc SCRL_DOWN  &mmv MOVE_X(400)  &mmv MOVE_Y(-400)  &mmv MOVE_X(-400)  &none  &none
-&none  &none      &none     &none     &none      &none          &trans  &none  &none  &none  &none  &none  &none           &mkp LCLK         &mkp MCLK          &mkp RCLK          &none  &none
-&none  &none      &trans    &trans    &trans                    &trans  &none  &none  &none  &none  &none                  &none             &none              &none              &none  &none
+&none  &none      &none     &none     &none                                                                                  &none              &none              &none             &none  &none
+&none  &none      &none     &none     &none      &none                                                     &none             &none              &none              &none             &none  &none
+&none  &none      &none     &kp UP    &none      &kp PAGE_UP                                               &msc MOVE_Y(-15)  &mkp LCLK          &mmv MOVE_Y(-400)  &mkp RCLK         &none  &none
+&none  &kp EQUAL  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PAGE_DOWN                                             &msc MOVE_Y(15)   &mmv MOVE_X(-400)  &mmv MOVE_Y(400)   &mmv MOVE_X(400)  &none  &none
+&none  &none      &none     &none     &none      &none          &trans  &none  &none  &none  &none  &none  &none             &msc MOVE_X(-15)   &mkp MCLK          &msc MOVE_X(15)   &none  &none
+&none  &none      &trans    &trans    &trans                    &trans  &none  &none  &none  &none  &none                    &none              &none              &none             &none  &none
             >;
         };
 
         Mouse-Fast {
             bindings = <
-&trans  &trans     &trans    &trans    &trans                                                                                    &trans            &trans             &trans             &trans  &trans
-&trans  &trans     &trans    &trans    &trans     &trans                                                         &trans          &trans            &trans             &trans             &trans  &trans
-&trans  &trans     &trans    &kp UP    &trans     &kp PAGE_UP                                                    &msc SCRL_UP    &trans            &mmv MOVE_Y(-600)  &trans             &trans  &trans
-&trans  &kp EQUAL  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PAGE_DOWN                                                  &msc SCRL_DOWN  &mmv MOVE_X(600)  &mmv MOVE_Y(-600)  &mmv MOVE_X(-600)  &trans  &trans
-&trans  &trans     &trans    &trans    &trans     &trans         &trans  &trans  &trans  &trans  &trans  &trans  &trans          &mkp LCLK         &mkp MCLK          &mkp RCLK          &trans  &trans
-&trans  &trans     &trans    &trans    &trans                    &trans  &trans  &trans  &trans  &trans  &trans                  &trans            &trans             &trans             &trans  &trans
+&none  &none   &none   &none   &none                                                                        &none              &none              &none             &none  &none
+&none  &none   &none   &none   &none   &none                                              &none             &none              &none              &none             &none  &none
+&none  &none   &none   &trans  &none   &trans                                             &msc MOVE_Y(-20)  &trans             &mmv MOVE_Y(-600)  &trans            &none  &none
+&none  &trans  &trans  &trans  &trans  &trans                                             &msc MOVE_Y(20)   &mmv MOVE_X(-600)  &mmv MOVE_Y(600)   &mmv MOVE_X(600)  &none  &none
+&none  &none   &none   &none   &none   &none   &trans  &none  &none  &none  &none  &none  &none             &msc MOVE_X(-20)   &trans             &msc MOVE_X(20)   &none  &none
+&none  &none   &trans  &trans  &trans          &trans  &none  &none  &none  &none  &none                    &none              &none              &none             &none  &none
             >;
         };
 
         Mouse-Slow {
             bindings = <
-&trans  &trans     &trans    &trans    &trans                                                                                    &trans            &trans             &trans             &trans  &trans
-&trans  &trans     &trans    &trans    &trans     &trans                                                         &trans          &trans            &trans             &trans             &trans  &trans
-&trans  &trans     &trans    &kp UP    &trans     &kp PAGE_UP                                                    &msc SCRL_UP    &trans            &mmv MOVE_Y(200)   &trans             &trans  &trans
-&trans  &kp EQUAL  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PAGE_DOWN                                                  &msc SCRL_DOWN  &mmv MOVE_X(200)  &mmv MOVE_Y(-200)  &mmv MOVE_X(-200)  &trans  &trans
-&trans  &trans     &trans    &trans    &trans     &trans         &trans  &trans  &trans  &trans  &trans  &trans  &trans          &mkp LCLK         &mkp MCLK          &mkp RCLK          &trans  &trans
-&trans  &trans     &trans    &trans    &trans                    &trans  &trans  &trans  &trans  &trans  &trans                  &trans            &trans             &trans             &trans  &trans
+&none  &none   &none   &none   &none                                                                       &none              &none              &none             &none  &none
+&none  &none   &none   &none   &none   &none                                              &none            &none              &none              &none             &none  &none
+&none  &none   &none   &trans  &none   &trans                                             &msc MOVE_Y(-5)  &trans             &mmv MOVE_Y(-100)  &trans            &none  &none
+&none  &trans  &trans  &trans  &trans  &trans                                             &msc MOVE_Y(5)   &mmv MOVE_X(-100)  &mmv MOVE_Y(100)   &mmv MOVE_X(100)  &none  &none
+&none  &none   &none   &none   &none   &none   &trans  &none  &none  &none  &none  &none  &none            &msc MOVE_X(-5)    &trans             &msc MOVE_X(5)    &none  &none
+&none  &none   &trans  &trans  &trans          &trans  &none  &none  &none  &none  &none                   &none              &none              &none             &none  &none
             >;
         };
 
