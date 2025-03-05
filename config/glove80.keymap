@@ -21,8 +21,6 @@
 #define MOUSEFAST 7
 #define MOUSESLOW 8
 #define NVIM 13
-
-
 #define GRN 0x78ff78 //light green
 #define RED 0xff0000 //red
 #define YLW 0xf8bb00 //orange-yellow
@@ -66,8 +64,6 @@ _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ ___
 #define RGB_TURQUOIS  0x476E6A // #476E6A
 #define RGB_WHITE     0xFFFFFF // #FFFFFF
 #define RGB_YELLOW    0xFFFF00 // #FFFF00
-
-
 #define AZURE         &ug RGB_AZURE
 #define BLACK         &ug RGB_BLACK
 #define BLUE_         &ug RGB_BLUE
@@ -89,11 +85,9 @@ _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ ___
 #define YELLW         &ug RGB_YELLOW
 #define _____         &ug ___
 
-
-
 / {
     underglow-layer {
-        compatible  = "zmk,underglow-layer";
+        compatible = "zmk,underglow-layer";
 
         numbers {
             bindings = <
@@ -103,9 +97,11 @@ _____ CHART CHART _____ CORAL _____                                             
 _____ GOLDN GOLDN GOLDN GOLDN _____                                                WHITE TEAL_ TEAL_ TEAL_ SPRIN _____
 _____ _____ _____ _____ _____ _____ _____ _____ _____            _____ _____ _____ WHITE TEAL_ TEAL_ TEAL_ CORAL _____
 _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ _____       TEAL_ SPRIN CORAL _____ _____
-        >;
+            >;
+
             layer-id = <NUMBERS>;
         };
+
         mouse {
             bindings = <
 _____ _____ _____ _____ _____                                                            _____ _____ _____ _____ _____
@@ -114,10 +110,10 @@ _____ _____ _____ _____ _____ _____                                             
 _____ _____ _____ _____ _____ _____                                                WHITE BLUE_ BLUE_ BLUE_ _____ _____
 _____ _____ _____ _____ _____ _____ _____ _____ _____            _____ _____ _____ _____ WHITE ORANG WHITE _____ _____
 _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ _____       _____ _____ _____ _____ _____
-        >;
+            >;
+
             layer-id = <MOUSE>;
         };
-
 
         mouse_slow {
             bindings = <
@@ -127,7 +123,8 @@ _____ _____ _____ _____ _____ _____                                             
 _____ _____ _____ _____ _____ _____                                                WHITE TEAL_ TEAL_ TEAL_ _____ _____
 _____ _____ _____ _____ _____ _____ _____ _____ _____            _____ _____ _____ _____ WHITE ORANG WHITE _____ _____
 _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ _____       _____ _____ _____ _____ _____
-        >;
+            >;
+
             layer-id = <MOUSESLOW>;
         };
 
@@ -139,7 +136,8 @@ _____ _____ _____ _____ _____ _____                                             
 _____ _____ _____ _____ _____ _____                                                WHITE GREEN GREEN GREEN _____ _____
 _____ _____ _____ _____ _____ _____ _____ _____ _____            _____ _____ _____ _____ WHITE ORANG WHITE _____ _____
 _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ _____       _____ _____ _____ _____ _____
-        >;
+            >;
+
             layer-id = <MOUSEFAST>;
         };
     };
@@ -308,7 +306,7 @@ _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ ___
 &kp GRAVE    &kp BSLH  &kp LBKT   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LESS_THAN                                                                                  &kp GREATER_THAN  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp RIGHT_BRACKET  &kp SLASH  &kp MINUS
 &kp TAB      &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                                          &kp K             &kp F                  &kp O            &kp U              &kp J      &kp TAB
 &kp LSHFT    &kp N     &kp R      &kp T           &kp S                 &kp G                                                                                          &kp Y             &kp H                  &kp A            &kp E              &kp I      &kp RIGHT_SHIFT
-&kp ESC      &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp TAB  &mo 6       &mo 4  &mo 2       &kp RSHFT                    &kp SEMICOLON     &kp P                  &ComExcl         &DotQues           &kp SQT    &tog 13
+&kp ESC      &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp TAB  &mo 7       &mo 4  &mo 2       &kp RSHFT                    &kp SEMICOLON     &kp P                  &ComExcl         &DotQues           &kp SQT    &tog 13
 &magic 12 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &mo 3    &kp ESCAPE  &mo 9  &Launchers  &mt BACKSPACE LA(BACKSPACE)                    &kp RIGHT_COMMAND      &kp RIGHT_ALT    &kp RIGHT_CONTROL  &kp MINUS  &WildCard
             >;
         };
@@ -328,7 +326,7 @@ _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ ___
             bindings = <
 &trans  &trans                &trans                 &trans       &trans                                                                             &trans    &trans    &trans     &trans     &trans
 &trans  &trans                &trans                 &trans       &trans     &trans                                                     &kp PERCENT  &kp FSLH  &kp STAR  &trans     &trans     &trans
-&trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PERIOD   &kp EQUAL  &kp COMMA                                                  &kp DOLLAR   &kp N7    &kp N8    &kp N9     &kp COLON  &trans
+&trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PERIOD   &kp EQUAL  &kp COMMA                                                  &kp DOLLAR   &kp N7    &kp N8    &kp N9     &kp MINUS  &trans
 &trans  &kp SLASH             &kp ASTERISK           &kp MINUS    &kp PLUS   &kp COLON                                                  &kp HASH     &kp N4    &kp N5    &kp N6     &kp PLUS   &trans
 &trans  &trans                &kp DOLLAR             &kp PERCENT  &kp HASH   &trans     &trans  &trans  &trans  &trans  &trans  &trans  &kp COMMA    &kp N1    &kp N2    &kp N3     &kp EQUAL  &trans
 &trans  &trans                &trans                 &trans       &trans                &trans  &trans  &trans  &trans  &trans  &trans               &kp N0    &kp DOT   &kp EQUAL  &trans     &trans
@@ -374,8 +372,8 @@ _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ ___
 &none  &none      &none     &none     &none      &none                                                     &none             &none              &none              &none             &none  &none
 &none  &none      &none     &kp UP    &none      &kp PAGE_UP                                               &msc MOVE_Y(-15)  &mkp LCLK          &mmv MOVE_Y(-400)  &mkp RCLK         &none  &none
 &none  &kp EQUAL  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PAGE_DOWN                                             &msc MOVE_Y(15)   &mmv MOVE_X(-400)  &mmv MOVE_Y(400)   &mmv MOVE_X(400)  &none  &none
-&none  &none      &none     &none     &none      &none          &trans  &none  &none  &none  &none  &none  &none             &msc MOVE_X(-15)   &mkp MCLK          &msc MOVE_X(15)   &none  &none
-&none  &none      &trans    &trans    &trans                    &trans  &none  &none  &none  &none  &none                    &none              &none              &none             &none  &none
+&none  &none      &none     &none     &none      &none          &trans  &none  &none  &none  &none  &mo 7  &none             &msc MOVE_X(-15)   &mkp MCLK          &msc MOVE_X(15)   &none  &none
+&none  &none      &trans    &trans    &trans                    &trans  &none  &none  &none  &none  &mo 8                    &none              &none              &none             &none  &none
             >;
         };
 
