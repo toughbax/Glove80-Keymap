@@ -166,6 +166,16 @@ _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ ___
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
+        ShiftKey: ShiftKey {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SHIFTKEY";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+        };
+
+
         LayerTap: LayerTap {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYERTAP";
