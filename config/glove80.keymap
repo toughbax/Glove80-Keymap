@@ -368,12 +368,12 @@ _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ ___
 
         Mouse {
             bindings = <
-&none  &none      &none     &none     &none                                                                                   &none              &none              &none             &none  &none
-&none  &none      &none     &none     &none      &none                                                      &none             &none              &none              &none             &none  &none
-&none  &none      &none     &kp UP    &none      &kp PAGE_UP                                                &msc MOVE_Y(15)   &mkp LCLK          &mmv MOVE_Y(-400)  &mkp RCLK         &none  &none
-&none  &kp EQUAL  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PAGE_DOWN                                              &msc MOVE_Y(-15)  &mmv MOVE_X(-400)  &mmv MOVE_Y(400)   &mmv MOVE_X(400)  &none  &none
-&none  &none      &none     &none     &none      &none          &trans  &none  &trans  &none  &none  &mo 7  &none             &msc MOVE_X(-15)   &mkp MCLK          &msc MOVE_X(15)   &none  &none
-&none  &none      &trans    &trans    &trans                    &trans  &none  &none   &none  &none  &mo 8                    &none              &none              &none             &none  &none
+&none  &none      &none     &none     &none                                                                                       &none              &none              &none             &none  &none
+&none  &none      &none     &none     &none      &none                                                          &none             &none              &none              &none             &none  &none
+&none  &none      &kp A     &kp UP    &none      &kp PAGE_UP                                                    &msc MOVE_Y(15)   &mkp LCLK          &mmv MOVE_Y(-400)  &mkp RCLK         &none  &none
+&none  &kp EQUAL  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PAGE_DOWN                                                  &msc MOVE_Y(-15)  &mmv MOVE_X(-400)  &mmv MOVE_Y(400)   &mmv MOVE_X(400)  &mo 7  &none
+&none  &none      &none     &none     &none      &none          &trans  &none  &trans  &none  &none  &mkp LCLK  &none             &msc MOVE_X(-15)   &mkp MCLK          &msc MOVE_X(15)   &mo 8  &none
+&none  &none      &trans    &trans    &trans                    &trans  &none  &none   &none  &none  &mkp RCLK                    &none              &none              &none             &none  &none
             >;
         };
 
@@ -381,7 +381,7 @@ _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ ___
             bindings = <
 &none  &none   &none   &none   &none                                                                        &none              &none              &none             &none  &none
 &none  &none   &none   &none   &none   &none                                              &none             &none              &none              &none             &none  &none
-&none  &none   &none   &trans  &none   &trans                                             &msc MOVE_Y(20)   &trans             &mmv MOVE_Y(-600)  &trans            &none  &none
+&none  &none   &kp B   &trans  &none   &trans                                             &msc MOVE_Y(20)   &trans             &mmv MOVE_Y(-600)  &trans            &none  &none
 &none  &trans  &trans  &trans  &trans  &trans                                             &msc MOVE_Y(-20)  &mmv MOVE_X(-600)  &mmv MOVE_Y(600)   &mmv MOVE_X(600)  &none  &none
 &none  &none   &none   &none   &none   &none   &trans  &none  &none  &none  &none  &none  &none             &msc MOVE_X(-20)   &trans             &msc MOVE_X(20)   &none  &none
 &none  &none   &trans  &trans  &trans          &trans  &none  &none  &none  &none  &none                    &none              &none              &none             &none  &none
@@ -392,7 +392,7 @@ _____ _____ _____ _____ _____       _____ _____ _____            _____ _____ ___
             bindings = <
 &none  &none   &none   &none   &none                                                                       &none              &none              &none             &none  &none
 &none  &none   &none   &none   &none   &none                                              &none            &none              &none              &none             &none  &none
-&none  &none   &none   &trans  &none   &trans                                             &msc MOVE_Y(5)   &trans             &mmv MOVE_Y(-100)  &trans            &none  &none
+&none  &none   &kp C   &trans  &none   &trans                                             &msc MOVE_Y(5)   &trans             &mmv MOVE_Y(-100)  &trans            &none  &none
 &none  &trans  &trans  &trans  &trans  &trans                                             &msc MOVE_Y(-5)  &mmv MOVE_X(-100)  &mmv MOVE_Y(100)   &mmv MOVE_X(100)  &none  &none
 &none  &none   &none   &none   &none   &none   &trans  &none  &none  &none  &none  &none  &none            &msc MOVE_X(-5)    &trans             &msc MOVE_X(5)    &none  &none
 &none  &none   &trans  &trans  &trans          &trans  &none  &none  &none  &none  &none                   &none              &none              &none             &none  &none
