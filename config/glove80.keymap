@@ -275,7 +275,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&Backspace>, <&Delete>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_LSFT)>;
+            mods = <(MOD_RGUI|MOD_LGUI)>;
         };
 
         TapHold: TapHold {
