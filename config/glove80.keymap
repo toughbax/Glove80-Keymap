@@ -403,7 +403,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     */
 
     keymap {
-        compatible = "zmk,keymap";-
+        compatible = "zmk,keymap";
 
         Typing-Graphite {
             bindings = <
