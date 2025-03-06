@@ -1,10 +1,23 @@
 /*
- * Copyright (c) 2020 The ZMK Contributors
- * Copyright (c) 2022 Innaworks Development Limited, trading as MoErgo
+ * Glove 80 Keymap
  *
- * SPDX-License-Identifier: MIT
+ * Contents:
+ * 1. Includes
+ * 2. Layer Defninitons
+ * 3. Color Definitions
+ * 4. Layer Colors
+ * 5. Color Maps
+ * 6. Behaviours
+ * 7. macros
+ * 8. Combos
+ * 9. Keymaps
+ *
  */
-/* Custom Device-tree */
+
+
+/***********
+*  1. Includes
+*********************/
 
 #include <dt-bindings/zmk/rgb_colors.h>
 #include <behaviors.dtsi>
@@ -14,7 +27,11 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
-/* Layer Definitions */
+
+
+/***********
+*  2. Layer Defninitons
+*********************/
 
 #define DEFAULT      0
 #define QWERTY       1
@@ -30,123 +47,197 @@
 #define SYSTEM      11
 #define MAGIC       12
 
-/*
- *    RGB MAPS
-*/
-/* Custom Device-tree */
-/* Empty underglow layer definition (for copy-paste)
-        mylayer {
-            bindings = <
+
+
+
+/***********
+*    RGB MAPS
+*********************/
+
+
+
+
+/***********
+* 3. Color Definitions
+*********************/
+
+#define COLOR_WHITE        0xFFFFFF
+#define COLOR_SKY_BLUE     0x66B3FF
+#define COLOR_DEEP_BLUE    0x005F99
+#define COLOR_LIGHT_BLUE   0x80CFFF
+#define COLOR_BRIGHT_GREEN 0x00E673
+#define COLOR_ORANGE       0xFF9933
+#define COLOR_PURPLE       0x9900FF
+#define COLOR_DEEP_PURPLE  0x0900FF
+#define COLOR_DARK_RED     0xB30000
+#define COLOR_GOLD         0xC49A21
+#define COLOR_DEEP_TEAL    0x005F73
+
+
+
+/***********
+* 4. Layer Colors
+*********************/
+
+#define ______  &ug ___
+#define _DFLT_  &ug ______
+#define _QWTY_  &ug COLOR_WHITE
+#define _NMBR_  &ug COLOR_SKY_BLUE
+#define _SYMB_  &ug COLOR_DEEP_BLUE
+#define _CONT_  &ug COLOR_ORANGE
+#define _NVIM_  &ug COLOR_PURPLE
+
+#define _MSE__  &ug COLOR_BRIGHT_GREEN
+#define _MSEF_  &ug COLOR_BRIGHT_GREEN
+#define _MSES_  &ug COLOR_BRIGHT_GREEN
+
+#define _HLP__  &ug COLOR_DEEP_TEAL
+#define _HLP2_  &ug COLOR_DEEP_TEAL
+#define _SYST_  &ug COLOR_DARK_RED
+#define _MAGC_  &ug COLOR_GOLD
+
+
+/***********
+ * 5. Color Maps
+*********************/
+
+/* Blank Example:
+
+    mylayer {
+        bindings = <
 ______ ______ ______ ______ ______                                                            ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                                ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                                ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                                ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______       ______ ______ ______            ______ ______ ______       ______ ______ ______ ______ ______
-        >;
-            layer-id = <LAYER_Name>;
-        };
+    >;
+        layer-id = <LAYER_Name>;
+    };
+
+
 */
 
-#define RGB_AZURE     0x99F5FF // #99F5FF
-#define RGB_BLACK     0x000000 // #000000
-#define RGB_BLUE      0x0000FF // #0000FF
-#define RGB_CHARTRSE  0x80FF00 // #80FF00
-#define RGB_CORAL     0xFF7C4D // #FF7C4D
-#define RGB_CYAN      0x00FFFF // #00FFFF
-#define RGB_GOLD      0xFFD900 // #FFD900
-#define RGB_GOLDNROD  0xD9A521 // #D9A521
-#define RGB_GREEN     0x00FF00 // #00FF00
-#define RGB_MAGENTA   0xFF00FF // #FF00FF
-#define RGB_ORANGE    0xFF8000 // #FF8000
-#define RGB_PINK      0xFF80BF // #FF80BF
-#define RGB_PURPLE    0x7A00FF // #7A00FF
-#define RGB_RED       0xFF0000 // #FF0000
-#define RGB_SPRINGRN  0x00FF80 // #00FF80
-#define RGB_TEAL      0x008080 // #008080
-#define RGB_TURQUOIS  0x476E6A // #476E6A
-#define RGB_WHITE     0xFFFFFF // #FFFFFF
-#define RGB_YELLOW    0xFFFF00 // #FFFF00
-#define _AZRE_         &ug RGB_AZURE
-#define _BLCK_         &ug RGB_BLACK
-#define _BLUE_         &ug RGB_BLUE
-#define _CHRT_         &ug RGB_CHARTRSE
-#define _CORL_         &ug RGB_CORAL
-#define _CYAN_         &ug RGB_CYAN
-#define _GOLD_         &ug RGB_GOLD
-#define _GLDN_         &ug RGB_GOLDNROD
-#define _GREN_         &ug RGB_GREEN
-#define _MGTA_         &ug RGB_MAGENTA
-#define _ORNG_         &ug RGB_ORANGE
-#define _PINK_         &ug RGB_PINK
-#define _PURPL         &ug RGB_PURPLE
-#define _RED__         &ug RGB_RED
-#define _SPRN_         &ug RGB_SPRINGRN
-#define _TEAL_         &ug RGB_TEAL
-#define _TURQ_         &ug RGB_TURQUOIS
-#define _WHIT_         &ug RGB_WHITE
-#define _YELL_         &ug RGB_YELLOW
-#define ______         &ug ___
 
 / {
     underglow-layer {
         compatible = "zmk,underglow-layer";
 
+        base {
+            bindings = <
+______ ______ _DFLT_ _DFLT_ _DFLT_                                                             _DFLT_ _DFLT_ _DFLT_ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______       ______ ______ ______             ______ ______ ______        ______ ______ ______ ______ ______
+        >;
+            layer-id = <DEFAULT>;
+        };
+
+        qwerty: {
+            <
+______ ______ _QWTY_ _QWTY_ _QWTY_                                                             _QWTY_ _QWTY_ _QWTY_ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______       ______ ______ ______             ______ ______ ______        ______ ______ ______ ______ ______
+        >;
+            layer-id = <QWERTY>;
+        };
+
         numbers {
             bindings = <
-______ ______ ______ ______ ______                                                             ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______                                               _SPRN_ _SPRN_ _SPRN_ ______ ______ ______
-______ _CHRT_ _CHRT_ ______ _CORL_ ______                                               _WHIT_ _TEAL_ _TEAL_ _TEAL_ _SPRN_ ______
-______ _GOLD_ _GOLD_ _GOLD_ _GOLD_ ______                                               _WHIT_ _TEAL_ _TEAL_ _TEAL_ _SPRN_ ______
-______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ _WHIT_ _TEAL_ _TEAL_ _TEAL_ _CORL_ ______
-______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______        _TEAL_ _SPRN_ _CORL_ ______ ______
+______ ______ _NMBR_ _NMBR_ _NMBR_                                                             _NMBR_ _NMBR_ _NMBR_ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______       ______ ______ ______             ______ ______ ______        ______ ______ ______ ______ ______
             >;
 
             layer-id = <NUMBERS>;
         };
+        
+        symbols {
+            <
+______ ______ _SYMB_ _SYMB_ _SYMB_                                                             _SYMB_ _SYMB_ _SYMB_ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______       ______ ______ ______             ______ ______ ______        ______ ______ ______ ______ ______
+        >;
+            layer-id = <SYMBOLS>;
+        };
+        
+        content {
+            <
+______ ______ _CONT_ _CONT_ _CONT_                                                             _CONT_ _CONT_ _CONT_ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______       ______ ______ ______             ______ ______ ______        ______ ______ ______ ______ ______
+        >;
+            layer-id = <CONTENT>;
+        };
+        
+        nvim {
+            <
+______ ______ _NVIM_ _NVIM_ _NVIM_                                                             _NVIM_ _NVIM_ _NVIM_ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______       ______ ______ ______             ______ ______ ______        ______ ______ ______ ______ ______
+        >;
+            layer-id = <NVIM>;
+        };
 
         mouse {
             bindings = <
-______ ______ ______ ______ ______                                                             ______ ______ ______ ______ ______
+______ ______ ______ _MSE__ ______                                                             ______ _MSE__ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______                                               _WHIT_ _ORNG_ _BLUE_ _ORNG_ ______ ______
-______ ______ ______ ______ ______ ______                                               _WHIT_ _BLUE_ _BLUE_ _BLUE_ ______ ______
-______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ _WHIT_ _ORNG_ _WHIT_ ______ ______
-______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______       ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______       ______ ______ ______             ______ ______ ______        ______ ______ ______ ______ ______
             >;
 
             layer-id = <MOUSE>;
         };
 
-        mouse_slow {
-            bindings = <
-______ ______ ______ ______ ______                                                             ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______                                               _WHIT_ _ORNG_ _TEAL_ _ORNG_ ______ ______
-______ ______ ______ ______ ______ ______                                               _WHIT_ _TEAL_ _TEAL_ _TEAL_ ______ ______
-______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ _WHIT_ _ORNG_ _WHIT_ ______ ______
-______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______        ______ ______ ______ ______ ______
-            >;
-
-            layer-id = <MOUSE_SLOW>;
-        };
-
         mouse_fast {
             bindings = <
-______ ______ ______ ______ ______                                                             ______ ______ ______ ______ ______
+______ ______ _MSEF_ _MSEF_ _MSEF_                                                             _MSEF_ _MSEF_ _MSEF_ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______                                               _WHIT_ _ORNG_ _GREN_ _ORNG_ ______ ______
-______ ______ ______ ______ ______ ______                                               _WHIT_ _GREN_ _GREN_ _GREN_ ______ ______
-______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ _WHIT_ _ORNG_ _WHIT_ ______ ______
-______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______        ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______       ______ ______ ______             ______ ______ ______        ______ ______ ______ ______ ______
             >;
 
             layer-id = <MOUSE_FAST>;
         };
 
+        mouse_slow {
+            bindings = <
+______ ______ ______ ______ _MSES_                                                             _MSES_ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
+______ ______ ______ ______ ______       ______ ______ ______             ______ ______ ______        ______ ______ ______ ______ ______
+            >;
+
+            layer-id = <MOUSE_SLOW>;
+        };
+
         shortcuts {
             bindings = <
-______ ______ _GREN_ _GREN_ _GREN_                                                             _GREN_ _GREN_ _GREN_ ______ ______
+______ ______ ______ ______ _HLP__                                                             _HLP__ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
@@ -157,9 +248,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             layer-id = <SHORTCUTS>;
         };
 
-        shortcuts2 {
+        shortcuts_2 {
             bindings = <
-______ ______ _BLUE_ _BLUE_ _BLUE_                                                             _BLUE_ _BLUE_ _BLUE_ ______ ______
+______ ______ ______ _HLP2_ _HLP2_                                                             _HLP2_ _HLP2_ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
@@ -172,7 +263,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         system {
             bindings = <
-______ ______ _RED__ _RED__ _RED__                                                             _RED__ _RED__ _RED__ ______ ______
+______ ______ _SYST_ _SYST_ _SYST_                                                             _SYST_ _SYST_ _SYST_ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______ ______                                               ______ ______ ______ ______ ______ ______
@@ -185,11 +276,17 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     };
 };
 
+
+
+/***********
+ * 6. Behaviours
+*********************/
+
 / {
     behaviors {
-        // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
-        // Configure it as a tap dance, so the first tap (or hold) is a &mo and the second tap is a &to
 
+    /* 6a. Keypairs *******/
+    
         ComExcl: ComExcl {
             compatible = "zmk,behavior-mod-morph";
             label = "COMEXCL";
@@ -208,23 +305,18 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
-        LayerTap: LayerTap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYERTAP";
-            bindings = <&mo>, <&tog>;
 
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            hold-while-undecided;
-        };
 
-        Launchers3: Launchers3 {
+    /* 6b. Quick Launchers *******/
+
+        Launchers: Launchers {
             compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHERS3";
-            bindings = <&LeaderKey>, <&AlfredKey>;
+            label = "LAUNCHERS";
+            bindings = <&Launchers2>, <&HomerowKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LGUI|MOD_RGUI)>;
+            mods = <(MOD_LCTL)>;
+            keep-mods = <(MOD_LCTL)>;
         };
 
         Launchers2: Launchers2 {
@@ -235,16 +327,18 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <0>;
             mods = <(MOD_RALT|MOD_LALT)>;
         };
-
-        Launchers: Launchers {
+        
+        Launchers3: Launchers3 {
             compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHERS";
-            bindings = <&Launchers2>, <&HammerspoonKey>;
+            label = "LAUNCHERS3";
+            bindings = <&LeaderKey>, <&AlfredKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
-            keep-mods = <(MOD_LCTL)>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
         };
+
+
+    /* 6c. Layer Toggle Keys **/
 
         Shortcuts: Shortcuts {
             compatible = "zmk,behavior-tap-dance";
@@ -269,6 +363,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&mo 2>, <&tog 2>;
         };
 
+    
+    /* 6d. Delete Backspace Functionality */
         BackDelete: BackDelete {
             compatible = "zmk,behavior-mod-morph";
             label = "BACKDELETE";
@@ -276,16 +372,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
             #binding-cells = <0>;
             mods = <(MOD_RGUI|MOD_LGUI)>;
-        };
-
-        TapHold: TapHold {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TAPHOLD";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
         };
 
         Delete: Delete {
@@ -306,10 +392,36 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
-        // Set mouse speed behavior (optional — you could also do this in mouse keymap entries directly)
+
+    /* 6e. Internal Helpers *******/
+        TapHold: TapHold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAPHOLD";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+        LayerTap: LayerTap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYERTAP";
+            bindings = <&mo>, <&tog>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            hold-while-undecided;
+        };
     };
 
+
+
+/***********
+* 7. macros
+*********************/
     macros {
+
+    /* 7a. Glove80 Core */
         rgb_ug_status_macro: rgb_ug_status_macro_0 {
             label = "RGB_UG_STATUS";
             compatible = "zmk,behavior-macro";
@@ -345,13 +457,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&out OUT_BLE &bt BT_SEL 3>;
         };
 
-        WildCard: WildCard {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(LG(LA(LC(F7))))>;
-            label = "WILDCARD";
-        };
 
+    /* 7b. Shortcut Keys */
         LeaderKey: LeaderKey {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -373,14 +480,22 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             label = "RAYCASTKEY";
         };
 
-        HammerspoonKey: Hammerspoon {
+        HomerowKey: HomerowKey {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LA(LC(SPACE))>;
-            label = "HAMMERSPOON";
+            label = "HOMEROWKEY";
+        };
+
+        WildCard: WildCard {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LG(LA(LC(F7))))>;
+            label = "WILDCARD";
         };
     };
 
+    /* 7c. Magic Layer/Core */
     magic: magic_hold_tap {
         compatible = "zmk,behavior-hold-tap";
         label = "MAGIC_HOLD_TAP";
@@ -390,14 +505,17 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         bindings = <&mo>, <&rgb_ug_status_macro>;
     };
 
-    /* Custom Defined Behaviors */
-    /* Automatically generated keymap */
 
+/***********
+* 8. Combos
+*********************/
     combos { compatible = "zmk,combos"; };
 
-    /*
-    * KEYMAP
-    */
+    
+
+/***********
+* 9. Keymaps
+*********************/
 
     keymap {
         compatible = "zmk,keymap";
