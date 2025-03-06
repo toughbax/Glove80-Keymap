@@ -297,29 +297,38 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 
     /* 6b. Quick Launchers */
-
-        Launchers: Launchers {
+        LaunchHomerow: LaunchHomerow {
             compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHERS";
-            bindings = <&Launchers2>, <&HomerowKey>;
+            label = "LAUNCHHOMEROW";
+            bindings = <&LaunchHomerowClick>, <&HomerowKey>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL)>;
             keep-mods = <(MOD_LCTL)>;
         };
 
-        Launchers2: Launchers2 {
+        LaunchHomerowClick: LaunchHomerowClick {
             compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHERS2";
-            bindings = <&Launchers3>, <&RayCastKey>;
+            label = "LAUNCHHOMEROWCLICK";
+            bindings = <&LaunchRaycast>, <&HomerowClickKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL)>;
+            keep-mods = <(MOD_LCTL)>;
+        };
+
+        LaunchRaycast: LaunchRaycast {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LAUNCHRAYCAST";
+            bindings = <&LaunchAlfred>, <&RayCastKey>;
 
             #binding-cells = <0>;
             mods = <(MOD_RALT|MOD_LALT)>;
         };
         
-        Launchers3: Launchers3 {
+        LaunchAlfred: LaunchAlfred {
             compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHERS3";
+            label = "LAUNCHERS4";
             bindings = <&LeaderKey>, <&AlfredKey>;
 
             #binding-cells = <0>;
@@ -485,6 +494,20 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <0>;
             bindings = <&kp LA(LC(SPACE))>;
             label = "HOMEROWKEY";
+        };
+
+        HomerowClickKey: HomerowClickKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LC(SPACE))>;
+            label = "HOMEROWCLICKKEY";
+        };
+
+        Launchers: Launchers {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&Launchers>;
+            label = "LAUNCHERS";
         };
 
         WildCard: WildCard {
