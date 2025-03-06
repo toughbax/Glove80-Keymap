@@ -272,7 +272,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 /***********
  * 6. Behaviours
 *********************/
-
 / {
     behaviors {
 
@@ -403,13 +402,24 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             tapping-term-ms = <150>;
             hold-while-undecided;
         };
-    };
 
+    /* 6d. Magic Layer/Core */
+        magic: magic_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MAGIC_HOLD_TAP";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&rgb_ug_status_macro>;
+        };
+    };
+};
 
 
 /***********
 * 7. macros
 *********************/
+/ {
     macros {
 
     /* 7a. Glove80 Core */
@@ -485,26 +495,20 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             label = "WILDCARD";
         };
     };
+};
 
-    /* 7c. Magic Layer/Core */
-    magic: magic_hold_tap {
-        compatible = "zmk,behavior-hold-tap";
-        label = "MAGIC_HOLD_TAP";
-        #binding-cells = <2>;
-        flavor = "tap-preferred";
-        tapping-term-ms = <200>;
-        bindings = <&mo>, <&rgb_ug_status_macro>;
-    };
 
 
 /***********
 * 8. Combos
 *********************/
+/ {
     combos { compatible = "zmk,combos"; };
 
 };
     
 
+/ {
 /***********
 * 9. Keymaps
 *********************/
