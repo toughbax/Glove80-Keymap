@@ -13,8 +13,6 @@
  * 9. Keymaps
  *
  */
-
-
 /***********
 *  1. Includes
 *********************/
@@ -26,8 +24,6 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
-
-
 
 /***********
 *  2. Layer Defninitons
@@ -47,7 +43,6 @@
 #define SYSTEM      11
 #define MAGIC       12
 
-
 /***********
 * 3. Color Definitions
 *********************/
@@ -64,8 +59,6 @@
 #define COLOR_GOLD         0xC49A21
 #define COLOR_DEEP_TEAL    0x005F73
 
-
-
 /***********
 * 4. Layer Colors
 *********************/
@@ -77,21 +70,17 @@
 #define _SYMB_  &ug COLOR_DEEP_BLUE
 #define _CONT_  &ug COLOR_ORANGE
 #define _NVIM_  &ug COLOR_PURPLE
-
 #define _MSE__  &ug COLOR_BRIGHT_GREEN
 #define _MSEF_  &ug COLOR_BRIGHT_GREEN
 #define _MSES_  &ug COLOR_BRIGHT_GREEN
-
 #define _HLP__  &ug COLOR_DEEP_TEAL
 #define _HLP2_  &ug COLOR_DEEP_TEAL
 #define _SYST_  &ug COLOR_DARK_RED
 #define _MAGC_  &ug COLOR_GOLD
 
-
 /***********
  * 5. Color Maps
 *********************/
-
 /* Blank Example:
 
     mylayer {
@@ -108,7 +97,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 */
 
-
 / {
     underglow-layer {
         compatible = "zmk,underglow-layer";
@@ -122,6 +110,7 @@ ______ ______ ______ ______ ______ ______                                       
 ______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______        ______ ______ ______ ______ ______
             >;
+
             layer-id = <DEFAULT>;
         };
 
@@ -134,6 +123,7 @@ ______ ______ ______ ______ ______ ______                                       
 ______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______        ______ ______ ______ ______ ______
             >;
+
             layer-id = <QWERTY>;
         };
 
@@ -149,7 +139,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
             layer-id = <NUMBERS>;
         };
-        
+
         symbols {
             bindings = <
 ______ ______ _SYMB_ _SYMB_ _SYMB_                                                                    _SYMB_ _SYMB_ _SYMB_ ______ ______
@@ -159,9 +149,10 @@ ______ ______ ______ ______ ______ ______                                       
 ______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______        ______ ______ ______ ______ ______
             >;
+
             layer-id = <SYMBOLS>;
         };
-        
+
         content {
             bindings = <
 ______ ______ _CONT_ _CONT_ _CONT_                                                                    _CONT_ _CONT_ _CONT_ ______ ______
@@ -171,9 +162,10 @@ ______ ______ ______ ______ ______ ______                                       
 ______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______        ______ ______ ______ ______ ______
             >;
+
             layer-id = <CONTENT>;
         };
-        
+
         nvim {
             bindings = <
 ______ ______ _NVIM_ _NVIM_ _NVIM_                                                                    _NVIM_ _NVIM_ _NVIM_ ______ ______
@@ -183,6 +175,7 @@ ______ ______ ______ ______ ______ ______                                       
 ______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
 ______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______        ______ ______ ______ ______ ______
             >;
+
             layer-id = <NVIM>;
         };
 
@@ -266,16 +259,14 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     };
 };
 
-
-
 /***********
  * 6. Behaviours
 *********************/
+
 / {
     behaviors {
+        /* 6a. Keypairs */
 
-    /* 6a. Keypairs */
-    
         ComExcl: ComExcl {
             compatible = "zmk,behavior-mod-morph";
             label = "COMEXCL";
@@ -294,9 +285,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
+        /* 6b. Quick Launchers */
 
-
-    /* 6b. Quick Launchers */
         LaunchHomerow: LaunchHomerow {
             compatible = "zmk,behavior-mod-morph";
             label = "LAUNCHHOMEROW";
@@ -325,7 +315,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <0>;
             mods = <(MOD_RALT|MOD_LALT)>;
         };
-        
+
         LaunchAlfred: LaunchAlfred {
             compatible = "zmk,behavior-mod-morph";
             label = "LAUNCHERS4";
@@ -335,8 +325,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LGUI|MOD_RGUI)>;
         };
 
-
-    /* 6c. Layer Toggle Keys **/
+        /* 6c. Layer Toggle Keys **/
 
         Shortcuts: Shortcuts {
             compatible = "zmk,behavior-tap-dance";
@@ -361,8 +350,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&mo 2>, <&tog 2>;
         };
 
-    
-    /* 6d. Delete Backspace Functionality */
+        /* 6d. Delete Backspace Functionality */
+
         BackDelete: BackDelete {
             compatible = "zmk,behavior-mod-morph";
             label = "BACKDELETE";
@@ -390,8 +379,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
+        /* 6e. Internal Helpers */
 
-    /* 6e. Internal Helpers */
         TapHold: TapHold {
             compatible = "zmk,behavior-hold-tap";
             label = "TAPHOLD";
@@ -401,6 +390,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
+
         LayerTap: LayerTap {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYERTAP";
@@ -411,7 +401,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             hold-while-undecided;
         };
 
-    /* 6d. Magic Layer/Core */
+        /* 6d. Magic Layer/Core */
+
         magic: magic_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "MAGIC_HOLD_TAP";
@@ -420,17 +411,62 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             tapping-term-ms = <200>;
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
+
+        KeyBrackets: KeyBrackets {
+            compatible = "zmk,behavior-mod-morph";
+            label = "KEYBRACKETS";
+            bindings = <&kp LEFT_PARENTHESIS>, <&kp RIGHT_PARENTHESIS>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+        };
+
+        KeyBrace: KeyBrace {
+            compatible = "zmk,behavior-mod-morph";
+            label = "KEYBRACE";
+            bindings = <&kp LEFT_BRACE>, <&kp RIGHT_BRACE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+        };
+
+        KeyCompare: KeyCompare {
+            compatible = "zmk,behavior-mod-morph";
+            label = "KEYCOMPARE";
+            bindings = <&kp LESS_THAN>, <&kp GREATER_THAN>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+        };
+
+        KeySlash: KeySlash {
+            compatible = "zmk,behavior-mod-morph";
+            label = "KEYSLASH";
+            bindings = <&kp SLASH>, <&kp BACKSLASH>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+        };
+
+        KeySquare: KeySquare {
+            compatible = "zmk,behavior-mod-morph";
+            label = "KEYSQUARE";
+            bindings = <&kp LEFT_BRACKET>, <&kp RIGHT_BRACKET>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+        };
     };
 };
-
 
 /***********
 * 7. macros
 *********************/
+
 / {
     macros {
+        /* 7a. Glove80 Core */
 
-    /* 7a. Glove80 Core */
         rgb_ug_status_macro: rgb_ug_status_macro_0 {
             label = "RGB_UG_STATUS";
             compatible = "zmk,behavior-macro";
@@ -466,8 +502,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&out OUT_BLE &bt BT_SEL 3>;
         };
 
+        /* 7b. Shortcut Keys */
 
-    /* 7b. Shortcut Keys */
         LeaderKey: LeaderKey {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -519,32 +555,30 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     };
 };
 
-
-
 /***********
 * 8. Combos
 *********************/
+
 / {
     combos { compatible = "zmk,combos"; };
 };
 
-
-
 /***********
 * 9. Keymaps
 *********************/
+
 / {
     keymap {
         compatible = "zmk,keymap";
 
         Typing-Graphite {
             bindings = <
-&kp F1       &kp F2    &kp F3     &kp F4          &kp F5                                                                                                                      &tog 13                &kp F7           &kp F8             &kp F9     &kp F10
-&kp GRAVE    &kp BSLH  &kp LBKT   &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LESS_THAN                                                                       &kp GREATER_THAN  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp RIGHT_BRACKET  &kp SLASH  &kp MINUS
-&kp TAB      &kp B     &kp L      &kp D           &kp W                 &kp Z                                                                               &kp K             &kp F                  &kp O            &kp U              &kp J      &kp TAB
-&kp LSHFT    &kp N     &kp R      &kp T           &kp S                 &kp G                                                                               &kp Y             &kp H                  &kp A            &kp E              &kp I      &kp RIGHT_SHIFT
-&kp ESC      &kp Q     &kp X      &kp M           &kp C                 &kp V          &kp SPACE  &kp TAB  &mo 6       &Content    &Numbers    &kp RSHFT    &kp SEMICOLON     &kp P                  &ComExcl         &DotQues           &kp SQT    &tog 13
-&magic 12 0  &kp HOME  &kp LCTRL  &kp LEFT_ALT    &kp LEFT_COMMAND                     &kp ENTER  &mo 3    &kp ESCAPE  &Shortcuts  &Launchers  &BackDelete                    &kp RIGHT_COMMAND      &kp RIGHT_ALT    &kp RIGHT_CONTROL  &kp MINUS  &WildCard
+&kp F1       &kp F2          &kp F3      &kp F4        &kp F5                                                                                                             &tog 13            &kp F7         &kp F8             &kp F9           &kp F10
+&kp GRAVE    &KeySlash       &KeySquare  &KeyBrace     &KeyBrackets      &KeyCompare                                                                       &kp MINUS      &kp GRAVE          &kp SQT        &kp EQUAL          &kp PIPE         &kp MINUS
+&kp TAB      &kp B           &kp L       &kp D         &kp W             &kp Z                                                                             &kp K          &kp F              &kp O          &kp U              &kp J            &kp TAB
+&kp LSHFT    &kp N           &kp R       &kp T         &kp S             &kp G                                                                             &kp Y          &kp H              &kp A          &kp E              &kp I            &kp RIGHT_SHIFT
+&kp ESC      &kp Q           &kp X       &kp M         &kp C             &kp V        &kp SPACE  &kp TAB  &mo 6       &Content    &Numbers    &kp RSHFT    &kp SEMICOLON  &kp P              &ComExcl       &DotQues           &kp SQT          &tog 13
+&magic 12 0  &kp LEFT_SHIFT  &kp LCTRL   &kp LEFT_ALT  &kp LEFT_COMMAND               &kp ENTER  &mo 3    &kp ESCAPE  &Shortcuts  &Launchers  &BackDelete                 &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp RIGHT_SHIFT  &WildCard
             >;
         };
 
