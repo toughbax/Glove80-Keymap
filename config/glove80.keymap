@@ -293,8 +293,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LaunchRaycast>, <&MouseMapKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
-            keep-mods = <(MOD_LCTL)>;
+            mods = <(MOD_RCTL)>;
         };
 
         LaunchRaycast: LaunchRaycast {
@@ -303,7 +302,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LaunchAlfred>, <&RayCastKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RALT|MOD_LALT)>;
+            mods = <(MOD_RALT)>;
         };
 
         LaunchAlfred: LaunchAlfred {
@@ -312,7 +311,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LeaderKey>, <&AlfredKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LGUI|MOD_RGUI)>;
+            mods = <(MOD_RGUI)>;
         };
 
         /* 6c. Layer Toggle Keys **/
