@@ -4,7 +4,7 @@
  * Contents:
  * 1. Includes
  * 2. Layer Defninitons
- * 3. Application Shortcuts
+ * 3. Shortcut Defninitons
  * 4. Color Definitions
  * 5. Layer Colors
  * 6. Color Maps
@@ -44,14 +44,8 @@
 
 
 /************
-* 3. Application Shortcuts
+* 3. Shortcut Defninitons
 *********************/
-
-#define LEADER_KEY          LG(LA(LC(COMMA)))
-#define ALFRED_KEY          LA(SPACE)
-#define RAYCAST_KEY         LC(SPACE)
-#define MOUSECLICK_KEY      LA(LC(LG(SPACE)))
-
 
 
 /***********
@@ -325,6 +319,32 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     /* 7b. Quick Launchers
     /*************/
 
+        LaunchMouseMap: LaunchMouseMap {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LAUNCHMOUSEMAP";
+            bindings = <&LaunchRaycast>, <&MouseMapKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RCTL)>;
+        };
+
+        LaunchRaycast: LaunchRaycast {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LAUNCHRAYCAST";
+            bindings = <&LaunchAlfred>, <&RayCastKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RALT)>;
+        };
+
+        LaunchAlfred: LaunchAlfred {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LAUNCHERS4";
+            bindings = <&LeaderKey>, <&AlfredKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RGUI)>;
+        };
 
     /*****
     /* 7c. Layer Toggle Keys
@@ -490,18 +510,39 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     /* 8b. Shortcut Keys
     /*************/
 
-        Launchers: launchers {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <1>;
-            bindings = <
-                &kp LEADER_KEY
-                &kp ALFRED_KEY
-                &kp RAYCAST_KEY
-                &kp MOUSECLICK_KEY
-            >;
+        LeaderKey: LeaderKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LA(LC(COMMA)))>;
+            label = "LEADERKEY";
+        };
 
+        AlfredKey: AlfredKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(SPACE)>;
+            label = "ALFREDKEY";
+        };
+
+        RayCastKey: RayCastKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(SPACE)>;
+            label = "RAYCASTKEY";
+        };
+
+        MouseMapKey: MouseMapKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LC(LG(SPACE)))>;
+            label = "MOUSEMAPKEY";
+        };
+
+        Launchers: Launchers {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&LaunchMouseMap>;
             label = "LAUNCHERS";
-            mods = <(MOD_RALT | MOD_RGUI | MOD_RCTRL)>;
         };
 
 
@@ -575,10 +616,10 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Typing-Graphite {
             bindings = <
 &kp F1       &kp F2          &Wild1      &Wild2        &Wild3                                                                                                              &Wild4             &Wild5         &Wild6             &kp F9           &kp F10
-&kp GRAVE    &KeySlash       &KeySquare  &KeyBrace     &KeyBrackets      &KeyCompare                                                                        &kp MINUS      &kp GRAVE          &kp SQT        &kp EQUAL          &kp PIPE         &none
+&kp GRAVE    &KeySlash       &KeySquare  &KeyBrace     &KeyBrackets      &KeyCompare                                                                        &kp MINUS      &kp GRAVE          &KeySlash      &kp EQUAL          &kp PIPE         &none
 &caps_word   &kp B           &kp L       &kp D         &kp W             &kp Z                                                                              &kp K          &kp F              &kp O          &kp U              &kp J            &none
 &kp LSHFT    &kp N           &kp R       &kp T         &kp S             &kp G                                                                              &kp Y          &kp H              &kp A          &kp E              &kp I            &kp RIGHT_SHIFT
-&none        &kp Q           &kp X       &kp M         &kp C             &kp V        &kp SPACE  &kp TAB   &Mouse      &Content    &Numbers    &kp RSHFT    &kp SEMICOLON  &kp P              &ComExcl       &DotQues           &KeySlash        &none
+&none        &kp Q           &kp X       &kp M         &kp C             &kp V        &kp SPACE  &kp TAB   &Mouse      &Content    &Numbers    &kp RSHFT    &kp SEMICOLON  &kp P              &ComExcl       &DotQues           &kp SQT         &none
 &magic 10 0  &kp LEFT_SHIFT  &kp LCTRL   &kp LEFT_ALT  &kp LEFT_COMMAND               &kp ENTER  &Symbols  &kp ESCAPE  &Shortcuts  &Launchers  &BackDelete                 &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp RIGHT_SHIFT  &none
             >;
         };
