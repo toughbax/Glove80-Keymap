@@ -36,12 +36,10 @@
 #define CONTENT      4
 #define NVIM         5
 #define MOUSE        6
-#define MOUSE_FAST   7
-#define MOUSE_SLOW   8
-#define SHORTCUTS    9
-#define SHORTCUTS_2 10
-#define SYSTEM      11
-#define MAGIC       12
+#define SHORTCUTS    7
+#define SHORTCUTS_2  8
+#define SYSTEM       9
+#define MAGIC       10
 
 /***********
 * 3. Color Definitions
@@ -192,32 +190,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             layer-id = <MOUSE>;
         };
 
-        mouse_fast {
-            bindings = <
-______ ______ _MSEF_ _MSEF_ _MSEF_                                                                    _MSEF_ _MSEF_ _MSEF_ ______ ______
-______ ______ ______ ______ ______ ______                                                      ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______                                                      ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______                                                      ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______        ______ ______ ______ ______ ______
-            >;
-
-            layer-id = <MOUSE_FAST>;
-        };
-
-        mouse_slow {
-            bindings = <
-______ ______ ______ ______ _MSES_                                                                    _MSES_ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______                                                      ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______                                                      ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______                                                      ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______ ______ ______ ______ ______            ______ ______ ______ ______ ______ ______ ______ ______ ______
-______ ______ ______ ______ ______        ______ ______ ______            ______ ______ ______        ______ ______ ______ ______ ______
-            >;
-
-            layer-id = <MOUSE_SLOW>;
-        };
-
         shortcuts {
             bindings = <
 ______ ______ ______ ______ _HLP__                                                                    _HLP__ ______ ______ ______ ______
@@ -265,7 +237,11 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 / {
     behaviors {
-        /* 6a. Keypairs */
+
+
+    /*********
+    /* 6a. Keypairs */
+    /*********
 
         ComExcl: ComExcl {
             compatible = "zmk,behavior-mod-morph";
@@ -285,121 +261,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
-        /* 6b. Quick Launchers */
-
-        LaunchMouseMap: LaunchMouseMap {
-            compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHMOUSEMAP";
-            bindings = <&LaunchRaycast>, <&MouseMapKey>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RCTL)>;
-        };
-
-        LaunchRaycast: LaunchRaycast {
-            compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHRAYCAST";
-            bindings = <&LaunchAlfred>, <&RayCastKey>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RALT)>;
-        };
-
-        LaunchAlfred: LaunchAlfred {
-            compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHERS4";
-            bindings = <&LeaderKey>, <&AlfredKey>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RGUI)>;
-        };
-
-        /* 6c. Layer Toggle Keys **/
-
-        Shortcuts: Shortcuts {
-            compatible = "zmk,behavior-tap-dance";
-            label = "SHORTCUTS";
-            #binding-cells = <0>;
-            bindings = <&kp LA(LC(LG(LEFT_SHIFT)))>, <&mo 8>, <&mo 9>;
-
-            tapping-term-ms = <400>;
-        };
-
-        Content: Content {
-            compatible = "zmk,behavior-tap-dance";
-            label = "CONTENT";
-            #binding-cells = <0>;
-            bindings = <&mo 4>, <&mo 5>;
-        };
-
-        Numbers: Numbers {
-            compatible = "zmk,behavior-tap-dance";
-            label = "NUMBERS";
-            #binding-cells = <0>;
-            bindings = <&mo 2>, <&tog 2>;
-        };
-
-        /* 6d. Delete Backspace Functionality */
-
-        BackDelete: BackDelete {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BACKDELETE";
-            bindings = <&Backspace>, <&Delete>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RGUI|MOD_LGUI)>;
-        };
-
-        Delete: Delete {
-            compatible = "zmk,behavior-mod-morph";
-            label = "DELETE";
-            bindings = <&TapHold LA(DELETE) DELETE>, <&kp LG(DELETE)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-
-        Backspace: Backspace {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BACKSPACE";
-            bindings = <&TapHold LA(BACKSPACE) BACKSPACE>, <&kp LG(BACKSPACE)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-
-        /* 6e. Internal Helpers */
-
-        TapHold: TapHold {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TAPHOLD";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
-        LayerTap: LayerTap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYERTAP";
-            bindings = <&mo>, <&tog>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            hold-while-undecided;
-        };
-
-        /* 6d. Magic Layer/Core */
-
-        magic: magic_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MAGIC_HOLD_TAP";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&rgb_ug_status_macro>;
-        };
 
         KeyBrackets: KeyBrackets {
             compatible = "zmk,behavior-mod-morph";
@@ -446,6 +307,65 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
+
+    /*********
+    /* 6b. Quick Launchers */
+    /*********
+
+        LaunchMouseMap: LaunchMouseMap {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LAUNCHMOUSEMAP";
+            bindings = <&LaunchRaycast>, <&MouseMapKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RCTL)>;
+        };
+
+        LaunchRaycast: LaunchRaycast {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LAUNCHRAYCAST";
+            bindings = <&LaunchAlfred>, <&RayCastKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RALT)>;
+        };
+
+        LaunchAlfred: LaunchAlfred {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LAUNCHERS4";
+            bindings = <&LeaderKey>, <&AlfredKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RGUI)>;
+        };
+
+    /*********
+    /* 6c. Layer Toggle Keys **/
+    /*********
+
+        Shortcuts: Shortcuts {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SHORTCUTS";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LC(LG(LEFT_SHIFT)))>, <&mo 8>, <&mo 9>;
+
+            tapping-term-ms = <400>;
+        };
+
+        Content: Content {
+            compatible = "zmk,behavior-tap-dance";
+            label = "CONTENT";
+            #binding-cells = <0>;
+            bindings = <&mo 4>, <&mo 5>;
+        };
+
+        Numbers: Numbers {
+            compatible = "zmk,behavior-tap-dance";
+            label = "NUMBERS";
+            #binding-cells = <0>;
+            bindings = <&mo 2>, <&tog 2>;
+        };
+
         Mouse: Mouse {
             compatible = "zmk,behavior-tap-dance";
             label = "MOUSE";
@@ -459,6 +379,76 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <0>;
             bindings = <&mo 3>, <&tog 3>;
         };
+
+
+    /*********
+    /* 6d. Delete Backspace Functionality */
+    /*********
+
+        BackDelete: BackDelete {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKDELETE";
+            bindings = <&Backspace>, <&Delete>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RGUI|MOD_LGUI)>;
+        };
+
+        Delete: Delete {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DELETE";
+            bindings = <&TapHold LA(DELETE) DELETE>, <&kp LG(DELETE)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        Backspace: Backspace {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACE";
+            bindings = <&TapHold LA(BACKSPACE) BACKSPACE>, <&kp LG(BACKSPACE)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+
+    /*********
+    /* 6e. Internal Helpers */
+    /*********
+
+        TapHold: TapHold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAPHOLD";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        LayerTap: LayerTap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYERTAP";
+            bindings = <&mo>, <&tog>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            hold-while-undecided;
+        };
+
+    /*********
+    /* 6d. Magic Layer/Core */
+    /*********
+
+        magic: magic_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MAGIC_HOLD_TAP";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&rgb_ug_status_macro>;
+        };
     };
 };
 
@@ -468,7 +458,10 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 / {
     macros {
-        /* 7a. Glove80 Core */
+
+    /*********
+    /* 7a. Glove80 Core */
+    /*********
 
         rgb_ug_status_macro: rgb_ug_status_macro_0 {
             label = "RGB_UG_STATUS";
@@ -505,7 +498,10 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&out OUT_BLE &bt BT_SEL 3>;
         };
 
-        /* 7b. Shortcut Keys */
+
+    /*********
+    /* 7b. Shortcut Keys */
+    /*********
 
         LeaderKey: LeaderKey {
             compatible = "zmk,behavior-macro";
@@ -541,6 +537,19 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LaunchMouseMap>;
             label = "LAUNCHERS";
         };
+
+
+    /*********
+    /* 7c. WildCards
+    /*********
+
+        Wild: Wild {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <1>;
+            bindings = <&kp LS(LG(LA(LC(&1))))>;  // Uses parameter as function key
+            label = "WILDCARD";
+        };
+
 
         Wildcard: Wildcard {
             compatible = "zmk,behavior-macro";
@@ -586,6 +595,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     };
 };
 
+
 /***********
 * 8. Combos
 *********************/
@@ -593,6 +603,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 / {
     combos { compatible = "zmk,combos"; };
 };
+
+
 
 /***********
 * 9. Keymaps
@@ -604,7 +616,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Typing-Graphite {
             bindings = <
-&kp F1       &kp F2          &Wildcard   &Wildcard2    &Wildcard3                                                                                                          &Wildcard4         &Wildcard5     &Wildcard6         &kp F9           &kp F10
+&kp F1       &kp F2          &Wild F1    &Wild f2      &Wild f3                                                                                                            &Wild f4           &Wild f5       &Wild f6           &kp F9           &kp F10
 &kp GRAVE    &KeySlash       &KeySquare  &KeyBrace     &KeyBrackets      &KeyCompare                                                                        &kp MINUS      &kp GRAVE          &kp SQT        &kp EQUAL          &kp PIPE         &none
 &caps_word   &kp B           &kp L       &kp D         &kp W             &kp Z                                                                              &kp K          &kp F              &kp O          &kp U              &kp J            &none
 &kp LSHFT    &kp N           &kp R       &kp T         &kp S             &kp G                                                                              &kp Y          &kp H              &kp A          &kp E              &kp I            &kp RIGHT_SHIFT
