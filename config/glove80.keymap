@@ -13,7 +13,7 @@
  * 9. Keymaps
  *
  */
-/***********
+/************
 *  1. Includes
 *********************/
 
@@ -25,7 +25,7 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
-/***********
+/************
 *  2. Layer Defninitons
 *********************/
 
@@ -239,9 +239,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     behaviors {
 
 
-    /*********
-    /* 6a. Keypairs */
-    /*********
+    /*****
+    /* 6a. Keypairs
+    /**********/
 
         ComExcl: ComExcl {
             compatible = "zmk,behavior-mod-morph";
@@ -308,9 +308,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         };
 
 
-    /*********
-    /* 6b. Quick Launchers */
-    /*********
+    /*****
+    /* 6b. Quick Launchers
+    /*************/
 
         LaunchMouseMap: LaunchMouseMap {
             compatible = "zmk,behavior-mod-morph";
@@ -339,9 +339,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_RGUI)>;
         };
 
-    /*********
-    /* 6c. Layer Toggle Keys **/
-    /*********
+    /*****
+    /* 6c. Layer Toggle Keys
+    /*************/
 
         Shortcuts: Shortcuts {
             compatible = "zmk,behavior-tap-dance";
@@ -381,9 +381,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         };
 
 
-    /*********
-    /* 6d. Delete Backspace Functionality */
-    /*********
+    /******
+    /* 6d. Delete Backspace Functionality 
+    /*************/
 
         BackDelete: BackDelete {
             compatible = "zmk,behavior-mod-morph";
@@ -413,9 +413,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         };
 
 
-    /*********
-    /* 6e. Internal Helpers */
-    /*********
+    /******
+    /* 6e. Internal Helpers
+    /*************/
 
         TapHold: TapHold {
             compatible = "zmk,behavior-hold-tap";
@@ -437,9 +437,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             hold-while-undecided;
         };
 
-    /*********
-    /* 6d. Magic Layer/Core */
-    /*********
+    /******
+    /* 6d. Magic Layer/Core
+    /*************/
 
         magic: magic_hold_tap {
             compatible = "zmk,behavior-hold-tap";
@@ -459,9 +459,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 / {
     macros {
 
-    /*********
-    /* 7a. Glove80 Core */
-    /*********
+    /******
+    /* 7a. Glove80 Core
+    /*************/
 
         rgb_ug_status_macro: rgb_ug_status_macro_0 {
             label = "RGB_UG_STATUS";
@@ -499,9 +499,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         };
 
 
-    /*********
-    /* 7b. Shortcut Keys */
-    /*********
+    /******
+    /* 7b. Shortcut Keys
+    /*************/
 
         LeaderKey: LeaderKey {
             compatible = "zmk,behavior-macro";
@@ -541,7 +541,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
     /*********
     /* 7c. Wilds
-    /*********
+    /*************/
+
 
         Wild: Wild {
             compatible = "zmk,behavior-macro";
