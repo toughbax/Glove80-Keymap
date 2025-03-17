@@ -540,57 +540,49 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 
     /*********
-    /* 7c. WildCards
+    /* 7c. Wilds
     /*********
 
         Wild: Wild {
             compatible = "zmk,behavior-macro";
-            #binding-cells = <1>;
-            bindings = <&kp LS(LG(LA(LC(&1))))>;  // Uses parameter as function key
-            label = "WILDCARD";
-        };
-
-
-        Wildcard: Wildcard {
-            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(LG(LA(LC(F1))))>;
-            label = "WILDCARD";
+            label = "WILD";
         };
 
-        Wildcard2: Wildcard2 {
+        Wild2: Wild2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(LG(LA(LC(F2))))>;
-            label = "WILDCARD2";
+            label = "WILD2";
         };
 
-        Wildcard3: Wildcard3 {
+        Wild3: Wild3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(LG(LA(LC(F3))))>;
-            label = "WILDCARD3";
+            label = "WILD3";
         };
 
-        Wildcard4: Wildcard4 {
+        Wild4: Wild4 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(LG(LA(LC(F4))))>;
-            label = "WILDCARD4";
+            label = "WILD4";
         };
 
-        Wildcard5: Wildcard5 {
+        Wild5: Wild5 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(LG(LA(LC(F5))))>;
-            label = "WILDCARD5";
+            label = "WILD5";
         };
 
-        Wildcard6: Wildcard6 {
+        Wild6: Wild6 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(LG(LA(LC(F6))))>;
-            label = "WILDCARD6";
+            label = "WILD6";
         };
     };
 };
@@ -616,7 +608,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Typing-Graphite {
             bindings = <
-&kp F1       &kp F2          &Wild F1    &Wild f2      &Wild f3                                                                                                            &Wild f4           &Wild f5       &Wild f6           &kp F9           &kp F10
+&kp F1       &kp F2          &Wild1      &Wild2        &Wild3                                                                                                              &Wild4             &Wild5         &Wild6             &kp F9           &kp F10
 &kp GRAVE    &KeySlash       &KeySquare  &KeyBrace     &KeyBrackets      &KeyCompare                                                                        &kp MINUS      &kp GRAVE          &kp SQT        &kp EQUAL          &kp PIPE         &none
 &caps_word   &kp B           &kp L       &kp D         &kp W             &kp Z                                                                              &kp K          &kp F              &kp O          &kp U              &kp J            &none
 &kp LSHFT    &kp N           &kp R       &kp T         &kp S             &kp G                                                                              &kp Y          &kp H              &kp A          &kp E              &kp I            &kp RIGHT_SHIFT
