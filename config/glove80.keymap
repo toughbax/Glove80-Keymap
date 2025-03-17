@@ -42,12 +42,9 @@
 #define SYSTEM       9
 #define MAGIC       10
 
-
 /************
 * 3. Shortcut Defninitons
 *********************/
-
-
 /***********
 * 4. Color Definitions
 *********************/
@@ -244,9 +241,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 / {
     behaviors {
-
-
-    /*****
+        /*****
     /* 7a. Keypairs
     /**********/
 
@@ -267,7 +262,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
-
 
         KeyBrackets: KeyBrackets {
             compatible = "zmk,behavior-mod-morph";
@@ -314,8 +308,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
-
-    /*****
+        /*****
     /* 7b. Quick Launchers
     /*************/
 
@@ -346,7 +339,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_RGUI)>;
         };
 
-    /*****
+        /*****
     /* 7c. Layer Toggle Keys
     /*************/
 
@@ -387,8 +380,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&mo 3>, <&tog 3>;
         };
 
-
-    /******
+        /******
     /* 7d. Delete Backspace Functionality 
     /*************/
 
@@ -419,8 +411,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
-
-    /******
+        /******
     /* 7e. Internal Helpers
     /*************/
 
@@ -444,7 +435,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             hold-while-undecided;
         };
 
-    /******
+        /******
     /* 7f. Magic Layer/Core
     /*************/
 
@@ -465,8 +456,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 / {
     macros {
-
-    /******
+        /******
     /* 8a. Glove80 Core
     /*************/
 
@@ -505,8 +495,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&out OUT_BLE &bt BT_SEL 3>;
         };
 
-
-    /******
+        /******
     /* 8b. Shortcut Keys
     /*************/
 
@@ -545,8 +534,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             label = "LAUNCHERS";
         };
 
-
-    /*********
+        /*********
     /* 8c. Wilds
     /*************/
 
@@ -594,7 +582,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     };
 };
 
-
 /***********
 * 9. Combos
 *********************/
@@ -602,8 +589,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 / {
     combos { compatible = "zmk,combos"; };
 };
-
-
 
 /***********
 * 10. Keymaps
@@ -616,10 +601,10 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Typing-Graphite {
             bindings = <
 &kp F1       &kp F2          &Wild1      &Wild2        &Wild3                                                                                                              &Wild4             &Wild5         &Wild6             &kp F9           &kp F10
-&kp GRAVE    &KeySlash       &KeySquare  &KeyBrace     &KeyBrackets      &KeyCompare                                                                        &kp MINUS      &kp GRAVE          &KeySlash      &kp EQUAL          &kp PIPE         &none
+&kp GRAVE    &KeySlash       &KeySquare  &KeyBrace     &KeyBrackets      &KeyCompare                                                                        &kp GRAVE      &kp MINUS          &KeySlash      &kp EQUAL          &kp PIPE         &none
 &caps_word   &kp B           &kp L       &kp D         &kp W             &kp Z                                                                              &kp K          &kp F              &kp O          &kp U              &kp J            &none
 &kp LSHFT    &kp N           &kp R       &kp T         &kp S             &kp G                                                                              &kp Y          &kp H              &kp A          &kp E              &kp I            &kp RIGHT_SHIFT
-&none        &kp Q           &kp X       &kp M         &kp C             &kp V        &kp SPACE  &kp TAB   &Mouse      &Content    &Numbers    &kp RSHFT    &kp SEMICOLON  &kp P              &ComExcl       &DotQues           &kp SQT         &none
+&none        &kp Q           &kp X       &kp M         &kp C             &kp V        &kp SPACE  &kp TAB   &Mouse      &Content    &Numbers    &kp RSHFT    &kp SEMICOLON  &kp P              &ComExcl       &DotQues           &kp SQT          &none
 &magic 10 0  &kp LEFT_SHIFT  &kp LCTRL   &kp LEFT_ALT  &kp LEFT_COMMAND               &kp ENTER  &Symbols  &kp ESCAPE  &Shortcuts  &Launchers  &BackDelete                 &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp RIGHT_SHIFT  &none
             >;
         };
