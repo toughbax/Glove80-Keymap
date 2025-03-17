@@ -4,13 +4,14 @@
  * Contents:
  * 1. Includes
  * 2. Layer Defninitons
- * 3. Color Definitions
- * 4. Layer Colors
- * 5. Color Maps
- * 6. Behaviours
- * 7. macros
- * 8. Combos
- * 9. Keymaps
+ * 3. Application Shortcuts
+ * 4. Color Definitions
+ * 5. Layer Colors
+ * 6. Color Maps
+ * 7. Behaviours
+ * 8. macros
+ * 9. Combos
+ * 10. Keymaps
  *
  */
 /************
@@ -41,8 +42,20 @@
 #define SYSTEM       9
 #define MAGIC       10
 
+
+/************
+* 3. Application Shortcuts
+*********************/
+
+#define LEADER_KEY          LG(LA(LC(COMMA)))
+#define ALFRED_KEY          LA(SPACE)
+#define RAYCAST_KEY         LC(SPACE)
+#define MOUSECLICK_KEY      LA(LC(LG(SPACE)))
+
+
+
 /***********
-* 3. Color Definitions
+* 4. Color Definitions
 *********************/
 
 #define COLOR_WHITE        0xFFFFFF
@@ -58,7 +71,7 @@
 #define COLOR_DEEP_TEAL    0x005F73
 
 /***********
-* 4. Layer Colors
+* 5. Layer Colors
 *********************/
 
 #define ______  &ug BLACK
@@ -77,7 +90,7 @@
 #define _MAGC_  &ug COLOR_GOLD
 
 /***********
- * 5. Color Maps
+ * 6. Color Maps
 *********************/
 /* Blank Example:
 
@@ -232,7 +245,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 };
 
 /***********
- * 6. Behaviours
+ * 7. Behaviours
 *********************/
 
 / {
@@ -240,7 +253,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 
     /*****
-    /* 6a. Keypairs
+    /* 7a. Keypairs
     /**********/
 
         ComExcl: ComExcl {
@@ -309,38 +322,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 
     /*****
-    /* 6b. Quick Launchers
+    /* 7b. Quick Launchers
     /*************/
 
-        LaunchMouseMap: LaunchMouseMap {
-            compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHMOUSEMAP";
-            bindings = <&LaunchRaycast>, <&MouseMapKey>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RCTL)>;
-        };
-
-        LaunchRaycast: LaunchRaycast {
-            compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHRAYCAST";
-            bindings = <&LaunchAlfred>, <&RayCastKey>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RALT)>;
-        };
-
-        LaunchAlfred: LaunchAlfred {
-            compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHERS4";
-            bindings = <&LeaderKey>, <&AlfredKey>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RGUI)>;
-        };
 
     /*****
-    /* 6c. Layer Toggle Keys
+    /* 7c. Layer Toggle Keys
     /*************/
 
         Shortcuts: Shortcuts {
@@ -382,7 +369,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 
     /******
-    /* 6d. Delete Backspace Functionality 
+    /* 7d. Delete Backspace Functionality 
     /*************/
 
         BackDelete: BackDelete {
@@ -414,7 +401,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 
     /******
-    /* 6e. Internal Helpers
+    /* 7e. Internal Helpers
     /*************/
 
         TapHold: TapHold {
@@ -438,7 +425,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         };
 
     /******
-    /* 6d. Magic Layer/Core
+    /* 7f. Magic Layer/Core
     /*************/
 
         magic: magic_hold_tap {
@@ -453,14 +440,14 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 };
 
 /***********
-* 7. macros
+* 8. macros
 *********************/
 
 / {
     macros {
 
     /******
-    /* 7a. Glove80 Core
+    /* 8a. Glove80 Core
     /*************/
 
         rgb_ug_status_macro: rgb_ug_status_macro_0 {
@@ -500,47 +487,26 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 
     /******
-    /* 7b. Shortcut Keys
+    /* 8b. Shortcut Keys
     /*************/
 
-        LeaderKey: LeaderKey {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LG(LA(LC(COMMA)))>;
-            label = "LEADERKEY";
-        };
+        Launchers: launchers {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <1>;
+            bindings = <
+                &kp LEADER_KEY
+                &kp ALFRED_KEY
+                &kp RAYCAST_KEY
+                &kp MOUSECLICK_KEY
+            >;
 
-        AlfredKey: AlfredKey {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(SPACE)>;
-            label = "ALFREDKEY";
-        };
-
-        RayCastKey: RayCastKey {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(SPACE)>;
-            label = "RAYCASTKEY";
-        };
-
-        MouseMapKey: MouseMapKey {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(LC(LG(SPACE)))>;
-            label = "MOUSEMAPKEY";
-        };
-
-        Launchers: Launchers {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&LaunchMouseMap>;
             label = "LAUNCHERS";
+            mods = <(MOD_RALT | MOD_RGUI | MOD_RCTRL)>;
         };
 
 
     /*********
-    /* 7c. Wilds
+    /* 8c. Wilds
     /*************/
 
         Wild1: Wild1 {
@@ -589,7 +555,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 
 /***********
-* 8. Combos
+* 9. Combos
 *********************/
 
 / {
@@ -599,7 +565,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 
 /***********
-* 9. Keymaps
+* 10. Keymaps
 *********************/
 
 / {
