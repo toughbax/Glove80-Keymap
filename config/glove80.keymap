@@ -544,7 +544,15 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     /*************/
 
 
+        
         Wild: Wild {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <1>;
+            bindings = <&kp LS(LG(LA(LC(&1))))>;  // Uses parameter as function key
+            label = "WILDCARD";
+        };
+
+        Wild1: Wild1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(LG(LA(LC(F1))))>;
@@ -609,7 +617,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Typing-Graphite {
             bindings = <
-&kp F1       &kp F2          &Wild1      &Wild2        &Wild3                                                                                                              &Wild4             &Wild5         &Wild6             &kp F9           &kp F10
+&kp F1       &kp F2          &Wild f1   &Wild f2       &Wild f3                                                                                                            &Wild f4           &Wild f5       &Wild f6           &kp F9           &kp F10
 &kp GRAVE    &KeySlash       &KeySquare  &KeyBrace     &KeyBrackets      &KeyCompare                                                                        &kp MINUS      &kp GRAVE          &kp SQT        &kp EQUAL          &kp PIPE         &none
 &caps_word   &kp B           &kp L       &kp D         &kp W             &kp Z                                                                              &kp K          &kp F              &kp O          &kp U              &kp J            &none
 &kp LSHFT    &kp N           &kp R       &kp T         &kp S             &kp G                                                                              &kp Y          &kp H              &kp A          &kp E              &kp I            &kp RIGHT_SHIFT
