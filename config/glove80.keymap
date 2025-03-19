@@ -404,7 +404,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
-    /******
+        /******
     /* 7e. Internal Helpers
     /*************/
 
@@ -428,7 +428,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             hold-while-undecided;
         };
 
-    /******
+        /******
     /* 7f. Magic Layer/Core
     /*************/
 
@@ -450,14 +450,14 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             tapping-term-ms = <400>;
         };
 
-    /******
+        /******
     * 7g. Content Control
     *************/
-
         // SELECT_WORD_DELAY defines how long the macro waits (milliseconds)
         // after moving the cursor before it selects a word. A larger delay
         // may allow the macro to move to the next word upon each invocation.
         //
+
         #ifndef SELECT_WORD_DELAY
         #define SELECT_WORD_DELAY 1
         #endif
@@ -465,52 +465,60 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         #define select_all &kp LC(A)
 
         // Select None Macro
+
         select_none: select_none {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "SELECT_NONE";
-            bindings = <&kp DOWN>, <&kp UP>, <&kp RIGHT>, <&kp LEFT>;
+            bindings = <&kp DOWN &kp UP &kp RIGHT &kp LEFT>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
 
         // Select a word (jumps to the next word upon each successive invocation)
+
         select_word: select_word {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_word_right>, <&select_word_left>;
+
             mods = <(MOD_LSFT | MOD_RSFT)>;
         };
 
         // Move Right and Select a Word
+
         select_word_right: select_word_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "SELECT_WORD_RIGHT";
-            bindings = <&kp LG(RIGHT)>, <&kp LG(LEFT)>, <&kp LS(LG(RIGHT))>;
+            bindings = <&kp LG(RIGHT) &kp LG(LEFT) &kp LS(LG(RIGHT))>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
 
         // Move Left and Select a Word
+
         select_word_left: select_word_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "SELECT_WORD_LEFT";
-            bindings = <&kp LG(LEFT)>, <&kp LG(RIGHT)>, <&kp LS(LG(LEFT))>;
+            bindings = <&kp LG(LEFT) &kp LG(RIGHT) &kp LS(LG(LEFT))>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
 
         // Extend current selection by one word
+
         extend_word: extend_word {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&extend_word_right>, <&extend_word_left>;
+
             mods = <(MOD_LSFT | MOD_RSFT)>;
         };
 
         // Extend selection to the right by one word
+
         extend_word_right: extend_word_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -521,6 +529,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         };
 
         // Extend selection to the left by one word
+
         extend_word_left: extend_word_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -531,57 +540,65 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         };
 
         // Select the entire line
+
         select_line: select_line {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_line_right>, <&select_line_left>;
+
             mods = <(MOD_LSFT | MOD_RSFT)>;
         };
 
         // Select the current line (move cursor to start and then select)
+
         select_line_right: select_line_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "SELECT_LINE_RIGHT";
-            bindings = <&kp HOME>, <&kp LS(END)>;
+            bindings = <&kp HOME &kp LS(END)>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
 
         // Select the current line (move cursor to end and then select backward)
+
         select_line_left: select_line_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "SELECT_LINE_LEFT";
-            bindings = <&kp END>, <&kp LS(HOME)>;
+            bindings = <&kp END &kp LS(HOME)>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
 
         // Extend selection to the next line
+
         extend_line: extend_line {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&extend_line_right>, <&extend_line_left>;
+
             mods = <(MOD_LSFT | MOD_RSFT)>;
         };
 
         // Extend selection to the next line downward
+
         extend_line_right: extend_line_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "EXTEND_LINE_RIGHT";
-            bindings = <&kp LS(DOWN)>, <&kp LS(END)>;
+            bindings = <&kp LS(DOWN) &kp LS(END)>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
 
         // Extend selection to the previous line upward
+
         extend_line_left: extend_line_left {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "EXTEND_LINE_LEFT";
-            bindings = <&kp LS(UP)>, <&kp LS(HOME)>;
+            bindings = <&kp LS(UP) &kp LS(HOME)>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
@@ -594,8 +611,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 / {
     macros {
-   
-    /******
+        /******
     /* 8a. Glove80 Core
     /*************/
 
@@ -634,7 +650,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&out OUT_BLE &bt BT_SEL 3>;
         };
 
-    /******
+        /******
     /* 8b. Shortcut Keys
     /*************/
 
@@ -673,7 +689,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             label = "LAUNCHERS";
         };
 
-    /*********
+        /*********
     /* 8c. Wilds
     /*************/
 
@@ -783,12 +799,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Content-Cursor {
             bindings = <
-&trans  &trans  &trans     &trans      &trans                                                                       &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans      &trans       &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans      &trans       &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans      &trans       &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp K_CUT  &kp K_COPY  &kp K_PASTE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans      &trans               &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans        &trans     &trans        &trans                                                                                    &trans             &trans  &trans  &trans  &trans
+&trans  &trans        &trans     &trans        &trans        &kp LS(LG(V))                                                  &trans       &kp LS(LG(SPACE))  &trans  &trans  &trans  &trans
+&trans  &trans        &trans     &extend_line  &extend_word  &kp K_CUT                                                      &kp K_CUT    &trans             &trans  &trans  &trans  &trans
+&trans  &select_none  &kp LG(A)  &select_line  &select_word  &kp K_COPY                                                     &kp K_COPY   &kp K_FIND         &trans  &trans  &trans  &trans
+&trans  &trans        &kp K_CUT  &kp K_COPY    &kp K_PASTE   &kp K_PASTE    &trans  &trans  &trans  &trans  &trans  &trans  &kp K_PASTE  &trans             &trans  &trans  &trans  &trans
+&trans  &trans        &trans     &trans        &trans                       &trans  &trans  &trans  &trans  &trans  &trans               &trans             &trans  &trans  &trans  &trans
             >;
         };
 
@@ -805,12 +821,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Mouse {
             bindings = <
-&none  &none      &none     &none     &none                                                                                           &none              &none              &none             &none  &none
-&none  &none      &none     &none     &none      &none                                                              &none             &none              &none              &none             &none  &none
-&none  &none      &none     &kp UP    &none      &kp PAGE_UP                                                        &msc MOVE_Y(15)   &msc MOVE_X(-15)   &mmv MOVE_Y(-300)  &msc MOVE_X(15)   &none  &none
-&none  &kp EQUAL  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PAGE_DOWN                                                      &msc MOVE_Y(-15)  &mmv MOVE_X(-300)  &mmv MOVE_Y(300)   &mmv MOVE_X(300)  &none  &none
-&none  &none      &none     &none     &none      &none          &trans  &none  &trans  &none  &mkp LCLK  &mkp RCLK  &none             &mkp LCLK          &mkp MCLK          &mkp RCLK         &none  &none
-&none  &none      &trans    &trans    &trans                    &trans  &none  &none   &none  &mkp RCLK  &mkp LCLK                    &none              &none              &none             &none  &none
+&none  &none      &none         &none         &none                                                                                              &none              &none              &none             &none  &none
+&none  &none      &none         &none         &none         &none                                                              &none             &none              &none              &none             &none  &none
+&none  &none      &none         &kp UP        &none         &kp PAGE_UP                                                        &msc MOVE_Y(15)   &msc MOVE_X(-15)   &mmv MOVE_Y(-300)  &msc MOVE_X(15)   &none  &none
+&none  &kp EQUAL  &kp LEFT      &kp DOWN      &kp RIGHT     &kp PAGE_DOWN                                                      &msc MOVE_Y(-15)  &mmv MOVE_X(-300)  &mmv MOVE_Y(300)   &mmv MOVE_X(300)  &none  &none
+&none  &none      &select_none  &select_line  &select_word  &none          &trans  &none  &trans  &none  &mkp LCLK  &mkp RCLK  &none             &mkp LCLK          &mkp MCLK          &mkp RCLK         &none  &none
+&none  &none      &trans        &extend_line  &trans                       &trans  &none  &none   &none  &mkp RCLK  &mkp LCLK                    &none              &none              &none             &none  &none
             >;
         };
 
