@@ -804,7 +804,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &trans  &trans        &trans     &extend_line  &extend_word  &kp K_CUT                                                      &kp K_CUT    &trans             &trans  &trans  &trans  &trans
 &trans  &select_none  &kp LG(A)  &select_line  &select_word  &kp K_COPY                                                     &kp K_COPY   &kp K_FIND         &trans  &trans  &trans  &trans
 &trans  &trans        &kp K_CUT  &kp K_COPY    &kp K_PASTE   &kp K_PASTE    &trans  &trans  &trans  &trans  &trans  &trans  &kp K_PASTE  &trans             &trans  &trans  &trans  &trans
-&trans  &trans        &trans     &trans        &trans                       &trans  &trans  &trans  &trans  &trans  &trans               &trans             &trans  &trans  &trans  &trans
+&trans  &trans        &trans     &trans        &trans                       &trans  &mo 5   &trans  &trans  &trans  &trans               &trans             &trans  &trans  &trans  &trans
             >;
         };
 
