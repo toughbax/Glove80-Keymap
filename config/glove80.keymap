@@ -404,7 +404,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
-        /******
+    /******
     /* 7e. Internal Helpers
     /*************/
 
@@ -428,7 +428,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             hold-while-undecided;
         };
 
-        /******
+    /******
     /* 7f. Magic Layer/Core
     /*************/
 
@@ -449,108 +449,142 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <2>;
             tapping-term-ms = <400>;
         };
-    };
-
 
     /******
-    /* 7g. Content Control
-    /*************/
+    * 7g. Content Control
+    *************/
 
         // SELECT_WORD_DELAY defines how long the macro waits (milliseconds)
-        // after moving the cursor before it selects a word.  A larger delay
+        // after moving the cursor before it selects a word. A larger delay
         // may allow the macro to move to the next word upon each invocation.
         //
         #ifndef SELECT_WORD_DELAY
         #define SELECT_WORD_DELAY 1
         #endif
 
-        #define select_all kp _C(A)
+        #define select_all &kp LC(A)
 
-        ZMK_MACRO(select_none,
+        // Select None Macro
+        select_none: select_none {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            label = "SELECT_NONE";
+            bindings = <&kp DOWN>, <&kp UP>, <&kp RIGHT>, <&kp LEFT>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp DOWN &kp UP &kp RIGHT &kp LEFT>;
-        )
+        };
 
-        //
-        // select a word (jumps to next word upon each successive invocation)
-        //
+        // Select a word (jumps to the next word upon each successive invocation)
         select_word: select_word {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_word_right>, <&select_word_left>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_LSFT | MOD_RSFT)>;
         };
-        ZMK_MACRO(select_word_right,
-            wait-ms = <SELECT_WORD_DELAY>;
-            tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp _W(RIGHT) &kp _W(LEFT) &kp _W(LS(RIGHT))>;
-        )
-        ZMK_MACRO(select_word_left,
-            wait-ms = <SELECT_WORD_DELAY>;
-            tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp _W(LEFT) &kp _W(RIGHT) &kp _W(LS(LEFT))>;
-        )
 
-        //
-        // extend current selection by one word
-        //
+        // Move Right and Select a Word
+        select_word_right: select_word_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            label = "SELECT_WORD_RIGHT";
+            bindings = <&kp LG(RIGHT)>, <&kp LG(LEFT)>, <&kp LS(LG(RIGHT))>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+        };
+
+        // Move Left and Select a Word
+        select_word_left: select_word_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            label = "SELECT_WORD_LEFT";
+            bindings = <&kp LG(LEFT)>, <&kp LG(RIGHT)>, <&kp LS(LG(LEFT))>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+        };
+
+        // Extend current selection by one word
         extend_word: extend_word {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&extend_word_right>, <&extend_word_left>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_LSFT | MOD_RSFT)>;
         };
-        ZMK_MACRO(extend_word_right,
-            wait-ms = <SELECT_WORD_DELAY>;
-            tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp _W(LS(RIGHT))>;
-        )
-        ZMK_MACRO(extend_word_left,
-            wait-ms = <SELECT_WORD_DELAY>;
-            tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp _W(LS(LEFT))>;
-        )
 
-        //
-        // select current line
-        //
+        // Extend selection to the right by one word
+        extend_word_right: extend_word_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            label = "EXTEND_WORD_RIGHT";
+            bindings = <&kp LS(LG(RIGHT))>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+        };
+
+        // Extend selection to the left by one word
+        extend_word_left: extend_word_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            label = "EXTEND_WORD_LEFT";
+            bindings = <&kp LS(LG(LEFT))>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+        };
+
+        // Select the entire line
         select_line: select_line {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&select_line_right>, <&select_line_left>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_LSFT | MOD_RSFT)>;
         };
-        ZMK_MACRO(select_line_right,
-            wait-ms = <SELECT_WORD_DELAY>;
-            tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp _HOME &kp LS(_END)>;
-        )
-        ZMK_MACRO(select_line_left,
-            wait-ms = <SELECT_WORD_DELAY>;
-            tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp _END &kp LS(_HOME)>;
-        )
 
-        //
-        // extend current selection by one line
-        //
+        // Select the current line (move cursor to start and then select)
+        select_line_right: select_line_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            label = "SELECT_LINE_RIGHT";
+            bindings = <&kp HOME>, <&kp LS(END)>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+        };
+
+        // Select the current line (move cursor to end and then select backward)
+        select_line_left: select_line_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            label = "SELECT_LINE_LEFT";
+            bindings = <&kp END>, <&kp LS(HOME)>;
+            wait-ms = <SELECT_WORD_DELAY>;
+            tap-ms = <SELECT_WORD_DELAY>;
+        };
+
+        // Extend selection to the next line
         extend_line: extend_line {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&extend_line_right>, <&extend_line_left>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_LSFT | MOD_RSFT)>;
         };
-        ZMK_MACRO(extend_line_right,
+
+        // Extend selection to the next line downward
+        extend_line_right: extend_line_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            label = "EXTEND_LINE_RIGHT";
+            bindings = <&kp LS(DOWN)>, <&kp LS(END)>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp LS(DOWN) &kp LS(_END)>;
-        )
-        ZMK_MACRO(extend_line_left,
+        };
+
+        // Extend selection to the previous line upward
+        extend_line_left: extend_line_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            label = "EXTEND_LINE_LEFT";
+            bindings = <&kp LS(UP)>, <&kp LS(HOME)>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
-            bindings = <&kp LS(UP) &kp LS(_HOME)>;
-        )
+        };
     };
 };
 
