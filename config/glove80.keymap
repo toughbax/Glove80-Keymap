@@ -318,7 +318,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LaunchRaycast>, <&MouseMapKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RCTL)>;
+            mods = <(MOD_RALT)>;
         };
 
         LaunchRaycast: LaunchRaycast {
@@ -327,7 +327,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LaunchAlfred>, <&RayCastKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RALT)>;
+            mods = <(MOD_RGUI)>;
         };
 
         LaunchAlfred: LaunchAlfred {
@@ -336,7 +336,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LeaderKey>, <&AlfredKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RGUI)>;
+            mods = <(MOD_RSFT)>;
         };
 
         /*****
@@ -364,13 +364,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             label = "NUMBERS";
             #binding-cells = <0>;
             bindings = <&mo 2>, <&tog 2>;
-        };
-
-        Mouse: Mouse {
-            compatible = "zmk,behavior-tap-dance";
-            label = "MOUSE";
-            #binding-cells = <0>;
-            bindings = <&mo 6>, <&tog 6>;
         };
 
         Symbols: Symbols {
@@ -446,6 +439,15 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo>, <&rgb_ug_status_macro>;
+        };
+
+        Mouse: Mouse {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOUSE";
+            bindings = <&mo>, <&MouseMapKey>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <400>;
         };
     };
 };
@@ -604,8 +606,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &kp GRAVE    &KeySlash         &KeySquare    &KeyBrace         &KeyBrackets    &KeyCompare                                                                        &kp GRAVE      &kp MINUS        &KeySlash          &kp EQUAL      &kp PIPE           &none
 &caps_word   &kp B             &kp L         &kp D             &kp W           &kp Z                                                                              &kp K          &kp F            &kp O              &kp U          &kp J              &kp TAB
 &kp LSHFT    &kp N             &kp R         &kp T             &kp S           &kp G                                                                              &kp Y          &kp H            &kp A              &kp E          &kp I              &kp RIGHT_SHIFT
-&none        &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE  &kp TAB   &Mouse      &Content    &Numbers    &kp RSHFT    &kp SEMICOLON  &kp P            &ComExcl           &DotQues       &kp SQT            &none
-&magic 10 0  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Symbols  &kp ESCAPE  &Shortcuts  &Launchers  &BackDelete                 &kp RIGHT_SHIFT  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &none
+&none        &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &kp ESC     &Content  &Numbers    &kp RSHFT    &kp SEMICOLON  &kp P            &ComExcl           &DotQues       &kp SQT            &none
+&magic 10 0  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &Shortcuts  &Symbols  &Launchers  &BackDelete                 &kp RIGHT_SHIFT  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &none
             >;
         };
 
@@ -633,12 +635,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Symbols {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                                                  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans           &trans         &trans                &trans                 &trans                                                                                                &trans           &trans        &trans                &trans  &trans
+&kp GRAVE        &kp LBKT       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RBKT          &kp DOT                                                                     &trans  &trans           &trans        &trans                &trans  &trans
+&kp EXCLAMATION  &kp COMMA      &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp SEMI          &kp QUESTION                                                                &trans  &kp AMPS         &kp ASTERISK  &kp LEFT_PARENTHESIS  &trans  &trans
+&kp POUND        &kp CARET      &kp EQUAL             &kp UNDERSCORE         &kp DOLLAR        &kp ASTERISK                                                                &trans  &kp DLLR         &kp PRCNT     &kp CARET             &trans  &trans
+&kp TILDE        &kp LESS_THAN  &kp PIPE              &kp MINUS              &kp GREATER_THAN  &kp FSLH      &kp BSLH     &kp DOT    &kp ASTERISK  &trans  &trans  &trans  &trans  &kp EXCLAMATION  &kp AT        &kp HASH              &trans  &trans
+&trans           &kp AMPERSAND  &kp SQT               &kp DOUBLE_QUOTES      &kp PLUS                        &kp PERCENT  &kp COLON  &kp AT_SIGN   &trans  &trans  &trans          &trans           &trans        &trans                &trans  &trans
             >;
         };
 
