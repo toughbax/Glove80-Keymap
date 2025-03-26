@@ -380,9 +380,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         BackDelete: BackDelete {
             compatible = "zmk,behavior-mod-morph";
             label = "BACKDELETE";
-            bindings =
-                <&TapHold LA(BACKSPACE) BACKSPACE>,
-                <&TapHold LA(DELETE) DELETE>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
 
             #binding-cells = <0>;
             mods = <(MOD_RGUI|MOD_LGUI)>;
