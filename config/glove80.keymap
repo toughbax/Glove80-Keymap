@@ -347,7 +347,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-tap-dance";
             label = "SHORTCUTS";
             #binding-cells = <0>;
-            bindings = <&kp LA(LC(LG(LEFT_SHIFT)))>, <&mo 8>, <&mo 9>;
+            bindings = <&kp LA(LC(LG(LEFT_SHIFT)))>, <&mo 9>, <&mo 10>;
 
             tapping-term-ms = <400>;
         };
@@ -662,7 +662,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         MouseMapKey: MouseMapKey {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(LC(LG(SPACE)))>;
+            bindings = <&kp LA(LC(LG(SPACE))) &to 7>;
             label = "MOUSEMAPKEY";
         };
 
@@ -718,6 +718,13 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&kp LS(LG(LA(LC(F6))))>;
             label = "WILD6";
         };
+
+        MousLessClick: MousLessClick {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            label = "MOUSLESSCLICK";
+        };
     };
 };
 
@@ -744,7 +751,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &caps_word   &kp B             &kp L         &kp D             &kp W           &kp Z                                                                              &kp K          &kp F            &kp O              &kp U          &kp J              &kp TAB
 &kp LSHFT    &kp N             &kp R         &kp T             &kp S           &kp G                                                                              &kp Y          &kp H            &kp A              &kp E          &kp I              &kp RIGHT_SHIFT
 &none        &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &kp ESC     &Content  &Numbers    &kp ENTER    &kp SEMICOLON  &kp P            &ComExcl           &DotQues       &kp SQT            &none
-&magic 10 0  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &Shortcuts  &Symbols  &Launchers  &BackDelete                 &kp RIGHT_SHIFT  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &none
+&magic 11 0  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &Shortcuts  &mo 3     &Launchers  &BackDelete                 &kp RIGHT_SHIFT  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &none
             >;
         };
 
@@ -811,6 +818,17 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &none  &kp EQUAL  &kp LEFT      &kp DOWN      &kp RIGHT     &kp PAGE_DOWN                                                      &msc MOVE_Y(-15)  &mmv MOVE_X(-600)  &mmv MOVE_Y(600)   &mmv MOVE_X(600)  &none  &none
 &none  &none      &select_none  &select_line  &select_word  &none          &trans  &none  &trans  &none  &mkp LCLK  &mkp RCLK  &none             &mkp LCLK          &mkp MCLK          &mkp RCLK         &none  &none
 &none  &none      &trans        &extend_line  &trans                       &trans  &none  &none   &none  &mkp RCLK  &mkp LCLK                    &none              &none              &none             &none  &none
+            >;
+        };
+
+        MouseLess {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                                                                                &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                                &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                                &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                                &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &MousLessClick SPACE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans                &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
