@@ -383,7 +383,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&kp BACKSPACE>, <&kp DELETE>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RGUI|MOD_LGUI)>;
+            mods = <(MOD_RSFT)>;
+            keep-mods = <(MOD_RSFT)>;
         };
 
         /******
