@@ -823,12 +823,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         MouseLess {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                                                                &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                                &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                                &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                                &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &MousLessClick SPACE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans                &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                                                                                                                                                             &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                                                                                                             &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                                                                                                             &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                                                                                                             &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &MousLessClick LEFT_ALT  &MousLessClick LEFT_SHIFT  &MousLessClick ESCAPE  &trans  &MousLessClick LEFT_COMMAND   &MousLessClick RIGHT_ALT  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans                   &MousLessClick SPACE       &trans                 &trans  &MousLessClick RIGHT_COMMAND  &MousLessClick BACKSPACE          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
