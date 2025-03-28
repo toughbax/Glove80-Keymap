@@ -318,7 +318,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LaunchRaycast>, <&MouseMapKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RALT)>;
+            mods = <(MOD_RALT|MOD_LALT)>;
         };
 
         LaunchRaycast: LaunchRaycast {
@@ -336,7 +336,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LeaderKey>, <&AlfredKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RSFT)>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
         /*****
