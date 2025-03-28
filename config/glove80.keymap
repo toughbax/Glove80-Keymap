@@ -427,7 +427,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Mouse: Mouse {
             compatible = "zmk,behavior-hold-tap";
             label = "MOUSE";
-            bindings = <&mo>, <&MouseMapKey>;
+            bindings = <&mo>, <&LaunchMouseMap>;
 
             #binding-cells = <2>;
             tapping-term-ms = <400>;
