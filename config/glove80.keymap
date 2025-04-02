@@ -746,7 +746,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         ShortCatKey: ShortCatKey {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(LC(LG(LS(SLASH))))>;
+            bindings = <&kp LA(LC(LG(SLASH)))>;
             label = "SHORTCATKEY";
         };
     };
