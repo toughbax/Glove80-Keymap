@@ -245,19 +245,19 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     /* 7a. Keypairs
     /**********/
 
-        ComExcl: ComExcl {
+        Dot_Exlcaim: Dot_Exlcaim {
             compatible = "zmk,behavior-mod-morph";
-            label = "COMEXCL";
-            bindings = <&kp COMMA>, <&kp EXCLAMATION>;
+            label = "DOT_EXLCAIM";
+            bindings = <&kp PERIOD>, <&kp EXCLAMATION>;
 
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
-        DotQues: DotQues {
+        Com_Ques: Com_Ques {
             compatible = "zmk,behavior-mod-morph";
-            label = "DOTQUES";
-            bindings = <&kp PERIOD>, <&kp QUESTION>;
+            label = "COM_QUES";
+            bindings = <&kp COMMA>, <&kp QUESTION>;
 
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;
@@ -315,10 +315,10 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         LaunchMouseMap: LaunchMouseMap {
             compatible = "zmk,behavior-mod-morph";
             label = "LAUNCHMOUSEMAP";
-            bindings = <&LaunchRaycast>, <&MouseMapKey>;
+            bindings = <&LaunchShortCat>, <&MouseMapKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RALT|MOD_LALT)>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
         LaunchRaycast: LaunchRaycast {
@@ -327,7 +327,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LaunchAlfred>, <&RayCastKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RGUI)>;
+            mods = <(MOD_RGUI|MOD_LGUI)>;
         };
 
         LaunchAlfred: LaunchAlfred {
@@ -427,7 +427,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Mouse: Mouse {
             compatible = "zmk,behavior-hold-tap";
             label = "MOUSE";
-            bindings = <&mo>, <&LaunchMouseMap>;
+            bindings = <&mo>, <&MouseUtil>;
 
             #binding-cells = <2>;
             tapping-term-ms = <400>;
@@ -564,6 +564,24 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LSFT | MOD_RSFT)>;
         };
 
+        LaunchShortCat: LaunchShortCat {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LAUNCHSHORTCAT";
+            bindings = <&LaunchRaycast>, <&ShortCatKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RALT|MOD_LALT)>;
+        };
+
+        MouseUtil: MouseUtil {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOUSEUTIL";
+            bindings = <&MouseMapKey>, <&ShortCatKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RALT|MOD_RSFT|MOD_RGUI)>;
+        };
+
         // Extend selection to the next line downward
 
         extend_line_right: extend_line_right {
@@ -661,7 +679,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         MouseMapKey: MouseMapKey {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(LC(LG(SPACE))) &to 7>;
+            bindings = <&kp LA(LC(LG(SPACE)))>;
             label = "MOUSEMAPKEY";
         };
 
@@ -724,6 +742,13 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "MOUSLESSCLICK";
         };
+
+        ShortCatKey: ShortCatKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LC(LG(LS(SLASH))))>;
+            label = "SHORTCATKEY";
+        };
     };
 };
 
@@ -745,12 +770,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Typing-Graphite {
             bindings = <
-&kp F1       &kp F2            &Wild1        &Wild2            &Wild3                                                                                                            &Wild4           &Wild5             &Wild6         &kp F9             &kp F10
-&kp GRAVE    &KeySlash         &KeySquare    &KeyBrace         &KeyBrackets    &KeyCompare                                                                        &kp GRAVE      &kp MINUS        &KeySlash          &kp EQUAL      &kp PIPE           &none
-&caps_word   &kp B             &kp L         &kp D             &kp W           &kp Z                                                                              &kp K          &kp F            &kp O              &kp U          &kp J              &kp TAB
-&kp LSHFT    &kp N             &kp R         &kp T             &kp S           &kp G                                                                              &kp Y          &kp H            &kp A              &kp E          &kp I              &kp RIGHT_SHIFT
-&none        &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &kp ESC     &Content  &Numbers    &kp ENTER    &kp SEMICOLON  &kp P            &ComExcl           &DotQues       &kp SQT            &none
-&magic 11 0  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &Shortcuts  &mo 3     &Launchers  &BackDelete                 &kp RIGHT_SHIFT  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &none
+&kp F1        &kp F2            &Wild1        &Wild2            &Wild3                                                                                                            &Wild4           &Wild5             &Wild6         &kp F9             &kp F10
+&kp GRAVE     &KeySlash         &KeySquare    &KeyBrace         &KeyBrackets    &KeyCompare                                                                        &kp GRAVE      &kp MINUS        &KeySlash          &kp EQUAL      &kp PIPE           &none
+&kp CAPSLOCK  &kp B             &kp L         &kp D             &kp W           &kp Z                                                                              &kp K          &kp F            &kp O              &kp U          &kp J              &kp TAB
+&caps_word    &kp N             &kp R         &kp T             &kp S           &kp G                                                                              &kp Y          &kp H            &kp A              &kp E          &kp I              &kp TAB
+&none         &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &kp ESC     &Content  &Numbers    &kp ENTER    &kp SEMICOLON  &kp P            &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
+&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &Shortcuts  &mo 3     &Launchers  &BackDelete                 &kp RIGHT_SHIFT  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &none
             >;
         };
 
