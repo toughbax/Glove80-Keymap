@@ -770,12 +770,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Typing-Graphite {
             bindings = <
-&kp F1        &kp F2            &Wild1        &Wild2            &Wild3                                                                                                            &Wild4           &Wild5             &Wild6         &kp F9             &kp F10
-&kp GRAVE     &KeySlash         &KeySquare    &KeyBrace         &KeyBrackets    &KeyCompare                                                                        &kp GRAVE      &kp MINUS        &KeySlash          &kp EQUAL      &kp PIPE           &none
-&kp CAPSLOCK  &kp B             &kp L         &kp D             &kp W           &kp Z                                                                              &kp K          &kp F            &kp O              &kp U          &kp J              &kp TAB
-&caps_word    &kp N             &kp R         &kp T             &kp S           &kp G                                                                              &kp Y          &kp H            &kp A              &kp E          &kp I              &kp TAB
-&none         &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &kp ESC     &Content  &Numbers    &kp ENTER    &kp SEMICOLON  &kp P            &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
-&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &Shortcuts  &mo 3     &Launchers  &BackDelete                 &kp RIGHT_SHIFT  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &none
+&kp F1        &kp F2            &Wild1        &Wild2            &Wild3                                                                                                                &Wild4           &Wild5             &Wild6         &kp F9             &kp F10
+&kp GRAVE     &KeySlash         &KeySquare    &KeyBrace         &KeyBrackets    &KeyCompare                                                                            &kp GRAVE      &kp MINUS        &KeySlash          &kp EQUAL      &kp PIPE           &none
+&kp CAPSLOCK  &kp B             &kp L         &kp D             &kp W           &kp Z                                                                                  &kp K          &kp F            &kp O              &kp U          &kp J              &kp TAB
+&caps_word    &kp N             &kp R         &kp T             &kp S           &kp G                                                                                  &kp Y          &kp H            &kp A              &kp E          &kp I              &kp TAB
+&none         &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &kp ESC     &Content  &Numbers    &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P            &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
+&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &Shortcuts  &mo 3     &Launchers  &BackDelete                     &kp RIGHT_SHIFT  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &none
             >;
         };
 
