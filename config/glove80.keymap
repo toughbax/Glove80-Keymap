@@ -697,42 +697,42 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Wild1: Wild1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LG(LA(LC(F1))))>;
+            bindings = <&kp LG(LA(LC(NUMBER_1)))>;
             label = "WILD";
         };
 
         Wild2: Wild2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LG(LA(LC(F2))))>;
+            bindings = <&kp LG(LA(LC(NUMBER_2)))>;
             label = "WILD2";
         };
 
         Wild3: Wild3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LG(LA(LC(F3))))>;
+            bindings = <&kp LG(LA(LC(NUMBER_3)))>;
             label = "WILD3";
         };
 
         Wild4: Wild4 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LG(LA(LC(F4))))>;
+            bindings = <&kp LG(LA(LC(NUMBER_4)))>;
             label = "WILD4";
         };
 
         Wild5: Wild5 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LG(LA(LC(F5))))>;
+            bindings = <&kp LG(LA(LC(NUMBER_5)))>;
             label = "WILD5";
         };
 
         Wild6: Wild6 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LG(LA(LC(F6))))>;
+            bindings = <&kp LG(LA(LC(NUMBER_6)))>;
             label = "WILD6";
         };
 
