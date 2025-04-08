@@ -312,10 +312,10 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     /* 7b. Quick Launchers
     /*************/
 
-        LaunchMouseMap: LaunchMouseMap {
+        Launch1Pass: Launch1Pass {
             compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHMOUSEMAP";
-            bindings = <&LaunchShortCat>, <&MouseMapKey>;
+            label = "LAUNCH1PASS";
+            bindings = <&LaunchShortCat>, <&OnePassKey>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
@@ -327,7 +327,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LaunchAlfred>, <&RayCastKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RGUI|MOD_LGUI)>;
+            mods = <(MOD_RGUI|MOD_LGUI|MOD_LALT)>;
+            keep-mods = <(MOD_LALT)>;
         };
 
         LaunchAlfred: LaunchAlfred {
@@ -336,7 +337,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LeaderKey>, <&AlfredKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_LSFT)>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
         };
 
         /*****
@@ -686,7 +687,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Launchers: Launchers {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LaunchMouseMap>;
+            bindings = <&Launch1Pass>;
             label = "LAUNCHERS";
         };
 
@@ -697,42 +698,42 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Wild1: Wild1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(LA(LC(NUMBER_1)))>;
+            bindings = <&kp LC(LG(NUMBER_1))>;
             label = "WILD";
         };
 
         Wild2: Wild2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(LA(LC(NUMBER_2)))>;
+            bindings = <&kp LG(LC(NUMBER_2))>;
             label = "WILD2";
         };
 
         Wild3: Wild3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(LA(LC(NUMBER_3)))>;
+            bindings = <&kp LG(LC(NUMBER_3))>;
             label = "WILD3";
         };
 
         Wild4: Wild4 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(LA(LC(NUMBER_4)))>;
+            bindings = <&kp LG(LC(NUMBER_4))>;
             label = "WILD4";
         };
 
         Wild5: Wild5 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(LA(LC(NUMBER_5)))>;
+            bindings = <&kp LG(LC(NUMBER_5))>;
             label = "WILD5";
         };
 
         Wild6: Wild6 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(LA(LC(NUMBER_6)))>;
+            bindings = <&kp LG(LC(NUMBER_6))>;
             label = "WILD6";
         };
 
@@ -748,6 +749,13 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <0>;
             bindings = <&kp LA(LC(LG(SLASH)))>;
             label = "SHORTCATKEY";
+        };
+
+        OnePassKey: OnePassKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(PERIOD)>;
+            label = "ONEPASSKEY";
         };
     };
 };
@@ -777,12 +785,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Typing-Graphite {
             bindings = <
-&kp F1        &kp F2            &Wild1        &Wild2            &Wild3                                                                                                                          &Wild4           &Wild5             &Wild6         &kp F9             &kp F10
-&kp GRAVE     &KeySlash         &KeySquare    &KeyBrace         &KeyBrackets    &KeyCompare                                                                                      &kp GRAVE      &kp MINUS        &KeySlash          &kp EQUAL      &kp PIPE           &none
-&kp CAPSLOCK  &kp B             &kp L         &kp D             &kp W           &kp Z                                                                                            &kp K          &kp F            &kp O              &kp U          &kp J              &kp TAB
-&caps_word    &kp N             &kp R         &kp T             &kp S           &kp G                                                                                            &kp Y          &kp H            &kp A              &kp E          &kp I              &kp TAB
-&none         &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &kp LC(LG(LEFT_ALT))  &Symbols  &kp ENTER   &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P            &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
-&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &Numbers   &Mouse 6 0  &Content              &Numbers  &Launchers  &BackDelete                     &kp RIGHT_SHIFT  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp ESCAPE
+&kp F1        &kp F2            &Wild1        &Wild2            &Wild3                                                                                                                      &Wild4         &Wild5             &Wild6         &kp F9             &kp F10
+&kp GRAVE     &KeySlash         &KeySquare    &KeyBrace         &KeyBrackets    &KeyCompare                                                                                      &kp GRAVE  &kp MINUS      &KeySlash          &kp EQUAL      &kp PIPE           &none
+&kp CAPSLOCK  &kp B             &kp L         &kp D             &kp W           &kp Z                                                                                            &kp K      &kp F          &kp O              &kp U          &kp J              &kp TAB
+&caps_word    &kp N             &kp R         &kp T             &kp S           &kp G                                                                                            &kp Y      &kp H          &kp A              &kp E          &kp I              &kp TAB
+&none         &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &kp LC(LG(LEFT_ALT))  &Symbols  &kp ENTER   &kp RIGHT_SHIFT  &KeySlash  &kp P          &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
+&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &Numbers   &Mouse 6 0  &Content              &Numbers  &Launchers  &BackDelete                 &kp SEMICOLON  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp ESCAPE
             >;
         };
 
