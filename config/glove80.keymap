@@ -757,6 +757,13 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&kp LG(PERIOD)>;
             label = "ONEPASSKEY";
         };
+
+        WildCardMaster: WildCardMaster {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LG(LEFT_ALT))>;
+            label = "WILDCARDMASTER";
+        };
     };
 };
 
@@ -790,12 +797,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Typing-Graphite {
             bindings = <
-&kp F1        &kp F2            &Wild1        &Wild2            &Wild3                                                                                                                            &Wild4       &Wild5             &Wild6         &kp F9             &kp F10
-&kp GRAVE     &KeySlash         &KeySquare    &KeyBrace         &KeyBrackets    &KeyCompare                                                                                        &kp GRAVE      &kp MINUS    &KeySlash          &kp EQUAL      &kp PIPE           &none
-&kp CAPSLOCK  &kp B             &kp L         &kp D             &kp W           &kp Z                                                                                              &kp K          &kp F        &kp O              &kp U          &kp J              &kp TAB
-&caps_word    &kp N             &kp R         &kp T             &kp S           &kp G                                                                                              &kp Y          &kp H        &kp A              &kp E          &kp I              &kp TAB
-&none         &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &kp LC(LG(LEFT_ALT))  &Symbols    &Numbers    &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P        &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
-&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &Numbers   &Mouse 6 0  &Content              &Shortcuts  &Launchers  &kp ENTER                       &BackDelete  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp ESCAPE
+&kp F1        &kp F2            &Wild1        &Wild2            &Wild3                                                                                                                             &Wild4     &Wild5             &Wild6         &kp F9             &kp F10
+&kp GRAVE     &KeySlash         &KeySquare    &KeyBrace         &KeyBrackets    &KeyCompare                                                                                         &kp GRAVE      &kp MINUS  &KeySlash          &kp EQUAL      &kp PIPE           &none
+&kp CAPSLOCK  &kp B             &kp L         &kp D             &kp W           &kp Z                                                                                               &kp K          &kp F      &kp O              &kp U          &kp J              &kp TAB
+&caps_word    &kp N             &kp R         &kp T             &kp S           &kp G                                                                                               &kp Y          &kp H      &kp A              &kp E          &kp I              &kp TAB
+&none         &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE        &kp TAB     &WildCardMaster  &kp ENTER   &Numbers    &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P      &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
+&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &WildCardMaster  &Mouse 6 0  &Content         &Shortcuts  &Launchers  &BackDelete                     &kp ENTER  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp ESCAPE
             >;
         };
 
@@ -812,23 +819,23 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Numbers {
             bindings = <
-&trans  &trans                &trans                 &trans       &trans                                                                             &trans    &trans    &trans     &trans     &trans
-&trans  &trans                &trans                 &trans       &trans     &trans                                                     &kp PERCENT  &kp FSLH  &kp STAR  &trans     &trans     &trans
-&trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PERIOD   &kp EQUAL  &kp COMMA                                                  &kp DOLLAR   &kp N7    &kp N8    &kp N9     &kp MINUS  &trans
-&trans  &kp SLASH             &kp ASTERISK           &kp MINUS    &kp PLUS   &kp COLON                                                  &kp HASH     &kp N4    &kp N5    &kp N6     &kp PLUS   &trans
-&trans  &trans                &kp DOLLAR             &kp PERCENT  &kp HASH   &trans     &trans  &trans  &trans  &trans  &trans  &trans  &kp COMMA    &kp N1    &kp N2    &kp N3     &kp EQUAL  &trans
-&trans  &trans                &trans                 &trans       &trans                &trans  &trans  &trans  &trans  &trans  &trans               &kp N0    &kp DOT   &kp EQUAL  &trans     &trans
+&trans  &trans                &trans                 &trans       &trans                                                                               &trans    &trans    &trans     &trans     &trans
+&trans  &trans                &trans                 &trans       &trans     &trans                                                       &kp PERCENT  &kp FSLH  &kp STAR  &trans     &trans     &trans
+&trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PERIOD   &kp EQUAL  &kp COMMA                                                    &kp DOLLAR   &kp N7    &kp N8    &kp N9     &kp MINUS  &trans
+&trans  &kp SLASH             &kp ASTERISK           &kp MINUS    &kp PLUS   &kp COLON                                                    &kp HASH     &kp N4    &kp N5    &kp N6     &kp PLUS   &trans
+&trans  &trans                &kp DOLLAR             &kp PERCENT  &kp HASH   &trans     &trans  &trans  &trans  &trans  &trans  &Symbols  &kp COMMA    &kp N1    &kp N2    &kp N3     &kp EQUAL  &trans
+&trans  &trans                &trans                 &trans       &trans                &trans  &trans  &trans  &trans  &trans  &trans                 &kp N0    &kp DOT   &kp EQUAL  &trans     &trans
             >;
         };
 
         Symbols {
             bindings = <
-&trans           &trans         &trans                &trans                 &trans                                                                                                &trans           &trans        &trans                &trans  &trans
-&kp GRAVE        &kp LBKT       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RBKT          &kp DOT                                                                     &trans  &trans           &trans        &trans                &trans  &trans
-&kp EXCLAMATION  &kp COMMA      &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp SEMI          &kp QUESTION                                                                &trans  &kp AMPS         &kp ASTERISK  &kp LEFT_PARENTHESIS  &trans  &trans
-&kp POUND        &kp CARET      &kp EQUAL             &kp UNDERSCORE         &kp DOLLAR        &kp ASTERISK                                                                &trans  &kp DLLR         &kp PRCNT     &kp CARET             &trans  &trans
-&kp TILDE        &kp LESS_THAN  &kp PIPE              &kp MINUS              &kp GREATER_THAN  &kp FSLH      &kp BSLH     &kp DOT    &kp ASTERISK  &trans  &trans  &trans  &trans  &kp EXCLAMATION  &kp AT        &kp HASH              &trans  &trans
-&trans           &kp AMPERSAND  &kp SQT               &kp DOUBLE_QUOTES      &kp PLUS                        &kp PERCENT  &kp COLON  &kp AT_SIGN   &trans  &trans  &trans          &trans           &trans        &trans                &trans  &trans
+&trans           &trans         &trans                &trans                 &trans                                                                                                  &trans           &trans        &trans                &trans  &trans
+&kp GRAVE        &kp LBKT       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RBKT          &kp DOT                                                                       &trans  &trans           &trans        &trans                &trans  &trans
+&kp EXCLAMATION  &kp COMMA      &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp SEMI          &kp QUESTION                                                                  &trans  &kp AMPS         &kp ASTERISK  &kp LEFT_PARENTHESIS  &trans  &trans
+&kp POUND        &kp CARET      &kp EQUAL             &kp UNDERSCORE         &kp DOLLAR        &kp ASTERISK                                                                  &trans  &kp DLLR         &kp PRCNT     &kp CARET             &trans  &trans
+&kp TILDE        &kp LESS_THAN  &kp PIPE              &kp MINUS              &kp GREATER_THAN  &kp FSLH      &kp BSLH     &kp DOT    &kp ASTERISK  &trans  &Numbers  &trans  &trans  &kp EXCLAMATION  &kp AT        &kp HASH              &trans  &trans
+&trans           &kp AMPERSAND  &kp SQT               &kp DOUBLE_QUOTES      &kp PLUS                        &kp PERCENT  &kp COLON  &kp AT_SIGN   &trans  &trans    &trans          &trans           &trans        &trans                &trans  &trans
             >;
         };
 
