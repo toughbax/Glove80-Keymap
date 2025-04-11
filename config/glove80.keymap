@@ -776,6 +776,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <0>;
             bindings = <&WildCardLayer LC(LG(LEFT_ALT)) LA(LC(LG(F20)))>;
             label = "WILDCARDMASTER";
+            wait-ms = <300>;
+            tap-ms = <200>;
         };
     };
 };
