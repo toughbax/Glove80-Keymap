@@ -585,6 +585,17 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RALT|MOD_RSFT|MOD_RGUI)>;
         };
 
+        WildCardLayer: WildCardLayer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "WILDCARDLAYER";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            hold-while-undecided;
+            hold-while-undecided-linger;
+            tapping-term-ms = <200>;
+        };
+
         // Extend selection to the next line downward
 
         extend_line_right: extend_line_right {
@@ -763,7 +774,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         WildCardMaster: WildCardMaster {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&TapHold LC(LG(LEFT_ALT)) LA(LC(LG(F20)))>;
+            bindings = <&WildCardLayer LC(LG(LEFT_ALT)) LA(LC(LG(F20)))>;
             label = "WILDCARDMASTER";
         };
     };
