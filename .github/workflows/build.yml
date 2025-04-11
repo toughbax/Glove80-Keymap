@@ -23,8 +23,11 @@ jobs:
           skipPush: true
       - name: Build Glove80 combined firmware
         run: nix-build config -o combined
+      - name: Set commit short hash
+        id: commit
+        run: echo "commit_short=${GITHUB_SHA:0:7}" >> $GITHUB_OUTPUT
       - name: Copy result out of nix store
-        run: cp combined/glove80-${{ steps.commit.outputs.commit_short }}.uf2 glove80-${{ steps.commit.outputs.commit_short }}.uf2
+        run: cp combined/glove80.uf2 glove80-${{ steps.commit.outputs.commit_short }}.uf2
       - name: Upload result
         uses: actions/upload-artifact@v4
         with:
