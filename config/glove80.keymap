@@ -761,7 +761,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         WildCardMaster: WildCardMaster {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(LG(LEFT_ALT))>;
+            bindings = <&TapHold LC(LG(LEFT_ALT)) LA(LC(LG(F20)))>;
             label = "WILDCARDMASTER";
         };
     };
