@@ -422,7 +422,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             tapping-term-ms = <150>;
             hold-while-undecided;
         };
-        
+
         MouseUtil: MouseUtil {
             compatible = "zmk,behavior-mod-morph";
             label = "MOUSEUTIL";
@@ -431,18 +431,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <0>;
             mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RALT|MOD_RSFT|MOD_RGUI)>;
         };
-
-        WildCardLayer: WildCardLayer {
-            compatible = "zmk,behavior-hold-tap";
-            label = "WILDCARDLAYER";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            hold-while-undecided;
-            hold-while-undecided-linger;
-            tapping-term-ms = <200>;
-        };
-
 
         /******
     /* 7f. Magic Layer/Core
@@ -465,7 +453,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <2>;
             tapping-term-ms = <400>;
         };
-
 
         /******
     * 7g. Content Control
@@ -727,7 +714,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             label = "MOUSLESSCLICK";
         };
 
-
         /*********
     /* 8c. Wilds
     /*************/
@@ -777,7 +763,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         WildCardMaster: WildCardMaster {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&WildCardLayer LC(LG(LEFT_ALT)) LA(LC(LG(F20)))>;
+            bindings = <&mt LC(LG(LEFT_ALT)) LA(LC(LG(F20)))>;
             label = "WILDCARDMASTER";
             wait-ms = <300>;
             tap-ms = <200>;
