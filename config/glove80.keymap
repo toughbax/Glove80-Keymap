@@ -775,7 +775,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings =
                 <&macro_press>,
                 <&kp LC(LG(LEFT_ALT)) &macro_param_1to1 &kp MACRO_PLACEHOLDER>,
-                <&macro_release>;
+                <&macro_release>,
+                <&kp LC(LG(LEFT_ALT))>;
 
             label = "WILDCARDLAYER";
         };
