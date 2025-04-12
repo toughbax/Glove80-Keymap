@@ -769,15 +769,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             label = "WILD6";
         };
 
-        WildCardMaster: WildCardMaster {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&mt LC(LG(LEFT_ALT)) LA(LC(LG(F20))) &kp>;
-            label = "WILDCARDMASTER";
-            wait-ms = <300>;
-            tap-ms = <200>;
-        };
-
         WildCard: WildCardLayer {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
