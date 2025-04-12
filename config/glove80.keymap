@@ -321,6 +321,15 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
+        LaunchShortCat: LaunchShortCat {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LAUNCHSHORTCAT";
+            bindings = <&LaunchRaycast>, <&ShortCatKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RALT|MOD_LALT)>;
+        };
+
         LaunchRaycast: LaunchRaycast {
             compatible = "zmk,behavior-mod-morph";
             label = "LAUNCHRAYCAST";
@@ -413,6 +422,27 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             tapping-term-ms = <150>;
             hold-while-undecided;
         };
+        
+        MouseUtil: MouseUtil {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOUSEUTIL";
+            bindings = <&MouseMapKey>, <&ShortCatKey>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RALT|MOD_RSFT|MOD_RGUI)>;
+        };
+
+        WildCardLayer: WildCardLayer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "WILDCARDLAYER";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            hold-while-undecided;
+            hold-while-undecided-linger;
+            tapping-term-ms = <200>;
+        };
+
 
         /******
     /* 7f. Magic Layer/Core
@@ -435,6 +465,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <2>;
             tapping-term-ms = <400>;
         };
+
 
         /******
     * 7g. Content Control
@@ -567,35 +598,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LSFT | MOD_RSFT)>;
         };
 
-        LaunchShortCat: LaunchShortCat {
-            compatible = "zmk,behavior-mod-morph";
-            label = "LAUNCHSHORTCAT";
-            bindings = <&LaunchRaycast>, <&ShortCatKey>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_RALT|MOD_LALT)>;
-        };
-
-        MouseUtil: MouseUtil {
-            compatible = "zmk,behavior-mod-morph";
-            label = "MOUSEUTIL";
-            bindings = <&MouseMapKey>, <&ShortCatKey>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RALT|MOD_RSFT|MOD_RGUI)>;
-        };
-
-        WildCardLayer: WildCardLayer {
-            compatible = "zmk,behavior-hold-tap";
-            label = "WILDCARDLAYER";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            hold-while-undecided;
-            hold-while-undecided-linger;
-            tapping-term-ms = <200>;
-        };
-
         // Extend selection to the next line downward
 
         extend_line_right: extend_line_right {
@@ -676,6 +678,27 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             label = "LEADERKEY";
         };
 
+        ShortCatKey: ShortCatKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LC(LG(SLASH)))>;
+            label = "SHORTCATKEY";
+        };
+
+        MouseMapKey: MouseMapKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LC(LG(SPACE)))>;
+            label = "MOUSEMAPKEY";
+        };
+
+        OnePassKey: OnePassKey {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(PERIOD)>;
+            label = "ONEPASSKEY";
+        };
+
         AlfredKey: AlfredKey {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -690,19 +713,20 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             label = "RAYCASTKEY";
         };
 
-        MouseMapKey: MouseMapKey {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(LC(LG(SPACE)))>;
-            label = "MOUSEMAPKEY";
-        };
-
         Launchers: Launchers {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&Launch1Pass>;
             label = "LAUNCHERS";
         };
+
+        MousLessClick: MousLessClick {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            label = "MOUSLESSCLICK";
+        };
+
 
         /*********
     /* 8c. Wilds
@@ -748,27 +772,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             #binding-cells = <0>;
             bindings = <&kp LG(LC(NUMBER_6))>;
             label = "WILD6";
-        };
-
-        MousLessClick: MousLessClick {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "MOUSLESSCLICK";
-        };
-
-        ShortCatKey: ShortCatKey {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(LC(LG(SLASH)))>;
-            label = "SHORTCATKEY";
-        };
-
-        OnePassKey: OnePassKey {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LG(PERIOD)>;
-            label = "ONEPASSKEY";
         };
 
         WildCardMaster: WildCardMaster {
