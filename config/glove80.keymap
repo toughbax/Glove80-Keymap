@@ -727,48 +727,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
     /* 8c. Wilds
     /*************/
 
-        Wild1: Wild1 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(LG(NUMBER_1))>;
-            label = "WILD";
-        };
-
-        Wild2: Wild2 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LG(LC(NUMBER_2))>;
-            label = "WILD2";
-        };
-
-        Wild3: Wild3 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LG(LC(NUMBER_3))>;
-            label = "WILD3";
-        };
-
-        Wild4: Wild4 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LG(LC(NUMBER_4))>;
-            label = "WILD4";
-        };
-
-        Wild5: Wild5 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LG(LC(NUMBER_5))>;
-            label = "WILD5";
-        };
-
-        Wild6: Wild6 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LG(LC(NUMBER_6))>;
-            label = "WILD6";
-        };
-
         WildCard: WildCardLayer {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -817,12 +775,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Typing-Graphite {
             bindings = <
-&kp F1        &kp F2            &Wild1        &Wild2            &Wild3                                                                                                                                         &Wild4     &Wild5             &Wild6         &kp F9             &kp F10
-&kp GRAVE     &KeySlash         &KeySquare    &KeyBrace         &KeyBrackets    &KeyCompare                                                                                                     &kp GRAVE      &kp MINUS  &KeySlash          &kp EQUAL      &kp PIPE           &none
-&kp CAPSLOCK  &kp B             &kp L         &kp D             &kp W           &kp Z                                                                                                           &kp K          &kp F      &kp O              &kp U          &kp J              &kp TAB
-&caps_word    &kp N             &kp R         &kp T             &kp S           &kp G                                                                                                           &kp Y          &kp H      &kp A              &kp E          &kp I              &kp TAB
-&none         &kp Q             &kp X         &kp M             &kp C           &kp V        &kp SPACE                      &kp TAB     &WildCard F20  &kp ENTER   &Numbers    &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P      &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
-&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT               &WildTap LC(LG(LEFT_ALT)) F20  &Mouse 6 0  &Content       &Shortcuts  &Launchers  &BackDelete                     &kp ENTER  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp ESCAPE
+&kp F1        &kp F2            &WildCard NUMBER_1  &WildCard NUMBER_2  &WildCard NUMBER_3                                                                                                                                 &WildCard NUMBER_4  &WildCard NUMBER_5  &WildCard NUMBER_6  &kp F9             &kp F10
+&kp GRAVE     &KeySlash         &KeySquare          &KeyBrace           &KeyBrackets        &KeyCompare                                                                                                     &kp GRAVE      &kp MINUS           &KeySlash           &kp EQUAL           &kp PIPE           &none
+&kp CAPSLOCK  &kp B             &kp L               &kp D               &kp W               &kp Z                                                                                                           &kp K          &kp F               &kp O               &kp U               &kp J              &kp TAB
+&caps_word    &kp N             &kp R               &kp T               &kp S               &kp G                                                                                                           &kp Y          &kp H               &kp A               &kp E               &kp I              &kp TAB
+&none         &kp Q             &kp X               &kp M               &kp C               &kp V        &kp SPACE                      &kp TAB     &WildCard F20  &kp ENTER   &Numbers    &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P               &Com_Ques           &Dot_Exlcaim        &kp SQT            &none
+&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT        &kp LEFT_COMMAND    &kp LEFT_SHIFT                   &WildTap LC(LG(LEFT_ALT)) F20  &Mouse 6 0  &Content       &Shortcuts  &Launchers  &BackDelete                     &kp ENTER           &kp RIGHT_COMMAND   &kp RIGHT_ALT       &kp RIGHT_CONTROL  &kp ESCAPE
             >;
         };
 
