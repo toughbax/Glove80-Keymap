@@ -737,7 +737,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
                 <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
                 <&macro_release>,
                 <&kp LC(LG(LEFT_ALT))>;
-
+            tap-ms = <300>;
             label = "WILDCARDLAYER";
         };
     };
