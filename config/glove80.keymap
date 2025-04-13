@@ -585,13 +585,15 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LSFT | MOD_RSFT)>;
         };
 
-        WildTap: WildTap {
+        WildTap: hold-tap {
             compatible = "zmk,behavior-hold-tap";
             label = "WILDTAP";
-            bindings = <&kp>, <&WildCard>;
-
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             tapping-term-ms = <200>;
+            hold-on-release;
+            hold-binding = <&kp LC(LG(LEFT_ALT))>;
+            // The tap action sends the key combined with the modifiers.
+            tap-binding = <&WildCard>; 
         };
 
         // Extend selection to the next line downward
