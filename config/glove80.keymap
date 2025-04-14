@@ -595,6 +595,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             // The tap action sends the key combined with the modifiers.
 
             tap-binding = <&WildCard>;
+            hold-while-undecided;
+            hold-while-undecided-linger;
+            bindings = <&kp>, <&WildCard>;
         };
 
         // Extend selection to the next line downward
