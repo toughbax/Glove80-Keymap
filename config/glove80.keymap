@@ -45,6 +45,8 @@
 /************
 * 3. Shortcut Defninitons
 *********************/
+#define WildModifier  &kp LC(LG(LEFT_ALT))
+
 /***********
 * 4. Color Definitions
 *********************/
@@ -587,17 +589,11 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         WildTap: hold-tap {
             compatible = "zmk,behavior-hold-tap";
             label = "WILDTAP";
-            #binding-cells = <1>;
             tapping-term-ms = <200>;
             hold-on-release;
-            hold-binding = <&kp LC(LG(LEFT_ALT))>;
-
-            // The tap action sends the key combined with the modifiers.
-
-            tap-binding = <&WildCard>;
             hold-while-undecided;
             hold-while-undecided-linger;
-            bindings = <&kp>, <&WildCard>;
+            bindings = <&WildModifier>, <&WildCard>;
         };
 
         // Extend selection to the next line downward
@@ -784,7 +780,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &kp GRAVE     &KeySlash         &KeySquare     &KeyBrace         &KeyBrackets    &KeyCompare                                                                                                 &kp GRAVE      &kp MINUS      &KeySlash          &kp EQUAL      &kp PIPE           &none
 &kp CAPSLOCK  &kp B             &kp L          &kp D             &kp W           &kp Z                                                                                                       &kp K          &kp F          &kp O              &kp U          &kp J              &kp TAB
 &caps_word    &kp N             &kp R          &kp T             &kp S           &kp G                                                                                                       &kp Y          &kp H          &kp A              &kp E          &kp I              &kp TAB
-&none         &kp Q             &kp X          &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &WildTap LG(LC(LEFT_ALT)) F20  &kp ENTER   &Numbers    &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P          &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
+&none         &kp Q             &kp X          &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &WildTap F20  &kp ENTER   &Numbers    &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P          &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
 &magic 10 0   &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &Content                       &Shortcuts  &Launchers  &BackDelete                     &Launchers     &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp ESCAPE
             >;
         };
