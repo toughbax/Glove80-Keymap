@@ -336,8 +336,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LaunchAlfred>, <&RayCastKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_RGUI|MOD_LGUI|MOD_LALT)>;
-            keep-mods = <(MOD_LALT)>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
         };
 
         LaunchAlfred: LaunchAlfred {
@@ -346,7 +345,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LeaderKey>, <&AlfredKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LGUI|MOD_RGUI)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         /*****
@@ -592,8 +591,10 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             tapping-term-ms = <200>;
             hold-on-release;
             hold-binding = <&kp LC(LG(LEFT_ALT))>;
+
             // The tap action sends the key combined with the modifiers.
-            tap-binding = <&WildCard>; 
+
+            tap-binding = <&WildCard>;
         };
 
         // Extend selection to the next line downward
@@ -739,6 +740,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
                 <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
                 <&macro_release>,
                 <&kp LC(LG(LEFT_ALT))>;
+
             tap-ms = <300>;
             label = "WILDCARDLAYER";
         };
@@ -780,7 +782,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &kp CAPSLOCK  &kp B             &kp L               &kp D               &kp W               &kp Z                                                                                                       &kp K          &kp F               &kp O               &kp U               &kp J              &kp TAB
 &caps_word    &kp N             &kp R               &kp T               &kp S               &kp G                                                                                                       &kp Y          &kp H               &kp A               &kp E               &kp I              &kp TAB
 &none         &kp Q             &kp X               &kp M               &kp C               &kp V        &kp SPACE  &kp TAB     &WildTap LG(LC(LEFT_ALT)) F20  &kp ENTER   &Numbers    &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P               &Com_Ques           &Dot_Exlcaim        &kp SQT            &none
-&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT        &kp LEFT_COMMAND    &kp LEFT_SHIFT                   &kp ENTER  &Mouse 6 0  &Content                       &Shortcuts  &Launchers  &BackDelete                     &kp ENTER           &kp RIGHT_COMMAND   &kp RIGHT_ALT       &kp RIGHT_CONTROL  &kp ESCAPE
+&magic 11 0   &kp LEFT_CONTROL  &kp LEFT_ALT        &kp LEFT_COMMAND    &kp LEFT_SHIFT                   &kp ENTER  &Mouse 6 0  &Content                       &Shortcuts  &Launchers  &BackDelete                     &Launchers          &kp RIGHT_COMMAND   &kp RIGHT_ALT       &kp RIGHT_CONTROL  &kp ESCAPE
             >;
         };
 
@@ -823,7 +825,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &trans  &trans        &trans     &trans        &trans        &kp LS(LG(V))                                                  &trans       &kp LS(LG(SPACE))  &trans  &trans  &trans  &trans
 &trans  &trans        &trans     &extend_line  &extend_word  &kp K_CUT                                                      &kp K_CUT    &caps_word         &trans  &trans  &trans  &trans
 &trans  &select_none  &kp LG(A)  &select_line  &select_word  &kp K_COPY                                                     &kp K_COPY   &kp K_FIND         &trans  &trans  &trans  &trans
-&trans  &trans        &kp K_CUT  &kp K_COPY    &kp K_PASTE   &kp K_PASTE    &trans  &trans  &trans  &trans  &trans  &trans  &kp K_PASTE  &trans             &trans  &trans  &trans  &trans
+&trans  &trans        &kp K_CUT  &kp K_PASTE   &kp K_COPY    &kp K_PASTE    &trans  &trans  &trans  &trans  &trans  &trans  &kp K_PASTE  &trans             &trans  &trans  &trans  &trans
 &trans  &trans        &trans     &trans        &trans                       &trans  &mo 5   &trans  &trans  &trans  &trans               &trans             &trans  &trans  &trans  &trans
             >;
         };
@@ -863,12 +865,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Shortcuts {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                                                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &kp ESCAPE          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans       &trans                                                                          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans       &trans      &trans                                                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans       &trans      &trans                                                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans       &trans      &trans                                                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp K_CUT  &kp K_PASTE  &kp K_COPY  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans       &trans              &trans  &trans  &trans  &trans  &trans  &kp ESCAPE          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
