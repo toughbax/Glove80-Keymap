@@ -587,16 +587,6 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             mods = <(MOD_LSFT | MOD_RSFT)>;
         };
 
-        WildTap: hold-tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "WILDTAP";
-            tapping-term-ms = <200>;
-            hold-on-release;
-            hold-while-undecided;
-            hold-while-undecided-linger;
-            bindings = <&WildModifier>, <&WildCard>;
-        };
-
         Launchers: Launchers {
             compatible = "zmk,behavior-hold-tap";
             label = "LAUNCHERS";
@@ -780,12 +770,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Typing-Graphite {
             bindings = <
-&WildCard F1  &WildCard F2      &WildCard F14  &WildCard F15     &WildCard F16                                                                                                                                      &WildCard F17   &WildCard F18      &WildCard F19  &WildCard F9       &WildCard F10
-&kp GRAVE     &KeySlash         &KeySquare     &KeyBrace         &KeyBrackets    &KeyCompare                                                                                                         &kp GRAVE      &kp MINUS       &KeySlash          &kp EQUAL      &kp PIPE           &none
-&kp CAPSLOCK  &kp B             &kp L          &kp D             &kp W           &kp Z                                                                                                               &kp K          &kp F           &kp O              &kp U          &kp J              &kp TAB
-&caps_word    &kp N             &kp R          &kp T             &kp S           &kp G                                                                                                               &kp Y          &kp H           &kp A              &kp E          &kp I              &Mouse 6 0
-&none         &kp Q             &kp X          &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &WildTap 0 F20  &kp ENTER   &Numbers                           &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P           &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
-&magic 10 0   &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &Content        &Shortcuts  &Launchers LC(LEFT_ALT) undefined  &BackDelete                     &WildTap 0 F24  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp ESCAPE
+&WildCard F1  &WildCard F2      &WildCard F14  &WildCard F15     &WildCard F16                                                                                                                                                     &WildCard F17                  &WildCard F18      &WildCard F19  &WildCard F9       &WildCard F10
+&kp GRAVE     &KeySlash         &KeySquare     &KeyBrace         &KeyBrackets    &KeyCompare                                                                                                                        &kp GRAVE      &kp MINUS                      &KeySlash          &kp EQUAL      &kp PIPE           &none
+&kp CAPSLOCK  &kp B             &kp L          &kp D             &kp W           &kp Z                                                                                                                              &kp K          &kp F                          &kp O              &kp U          &kp J              &kp TAB
+&caps_word    &kp N             &kp R          &kp T             &kp S           &kp G                                                                                                                              &kp Y          &kp H                          &kp A              &kp E          &kp I              &Mouse 6 0
+&none         &kp Q             &kp X          &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &TapHold LC(LG(LEFT_ALT)) F20  &kp ENTER   &Numbers                           &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P                          &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
+&magic 10 0   &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &Content                       &Shortcuts  &Launchers LC(LEFT_ALT) undefined  &BackDelete                     &TapHold LC(LG(LEFT_ALT)) F24  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp ESCAPE
             >;
         };
 
