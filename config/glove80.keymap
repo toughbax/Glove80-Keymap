@@ -757,6 +757,11 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&mo 3>;
             key-positions = <56 57>;
         };
+
+        Delete {
+            bindings = <&kp DELETE>;
+            key-positions = <54 74>;
+        };
     };
 };
 
