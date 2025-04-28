@@ -318,7 +318,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Launch1Pass: Launch1Pass {
             compatible = "zmk,behavior-mod-morph";
             label = "LAUNCH1PASS";
-            bindings = <&LaunchShortCat>, <&OnePassKey>;
+            bindings = <&LaunchRaycast>, <&OnePassKey>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
@@ -339,7 +339,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LaunchAlfred>, <&RayCastKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LGUI|MOD_RGUI)>;
+            mods = <(MOD_LALT|MOD_RALT)>;
         };
 
         LaunchAlfred: LaunchAlfred {
@@ -348,7 +348,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <&LeaderKey>, <&AlfredKey>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_RGUI|MOD_LGUI)>;
         };
 
         /*****
@@ -590,22 +590,11 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Launchers: Launchers {
             compatible = "zmk,behavior-hold-tap";
             label = "LAUNCHERS";
-            bindings = <&kp>, <&Launch1Pass>;
+            bindings = <&Shortcuts>, <&Launch1Pass>;
 
             #binding-cells = <2>;
             tapping-term-ms = <300>;
             hold-while-undecided;
-        };
-
-        AerospaceTap: AerospaceTap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "AEROSPACETAP";
-            bindings = <&kp>, <&ShortCatKey>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            hold-while-undecided;
-            hold-while-undecided-linger;
         };
 
         // Extend selection to the next line downward
@@ -791,7 +780,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &kp CAPSLOCK  &kp B             &kp L          &kp D             &kp W           &kp Z                                                                                                                     &kp K          &kp F                          &kp O              &kp U          &kp J              &kp TAB
 &caps_word    &kp N             &kp R          &kp T             &kp S           &kp G                                                                                                                     &kp Y          &kp H                          &kp A              &kp E          &kp I              &Mouse 6 0
 &none         &kp Q             &kp X          &kp M             &kp C           &kp V        &kp SPACE  &kp TAB     &TapHold LC(LG(LEFT_ALT)) F20  &kp ENTER  &Numbers                   &kp RIGHT_SHIFT  &kp SEMICOLON  &kp P                          &Com_Ques          &Dot_Exlcaim   &kp SQT            &none
-&magic 10 0   &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &AerospaceTap LC(LEFT_ALT) 0   &Content   &Launchers LA(LEFT_GUI) 0  &BackDelete                     &TapHold LC(LG(LEFT_ALT)) F24  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp ESCAPE
+&magic 10 0   &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_COMMAND  &kp LEFT_SHIFT               &kp ENTER  &Mouse 6 0  &kp LC(LEFT_ALT)               &Content   &Launchers LA(LEFT_GUI) 0  &BackDelete                     &TapHold LC(LG(LEFT_ALT)) F24  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &kp ESCAPE
             >;
         };
 
