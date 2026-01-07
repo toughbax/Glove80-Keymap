@@ -775,7 +775,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &kp CAPSLOCK    &kp B         &kp L             &kp D          &kp W             &kp Z                                                                                                                               &kp K          &kp F              &kp O          &kp U              &kp J                                      &kp ESCAPE
 &Mouse 6 0      &kp N         &kp R             &kp T          &kp S             &kp G                                                                                                                               &kp Y          &kp H              &kp A          &kp E              &kp I                                      &kp TAB
 &kp LEFT_SHIFT  &kp Q         &kp X             &kp M          &kp C             &kp V        &kp SPACE  &Numbers  &TapHold LC(LG(LEFT_ALT)) LA(LC(LG(F20)))  &Content    &Symbols                   &kp LEFT_SHIFT  &kp SEMICOLON  &kp P              &Com_Ques      &Dot_Exlcaim       &kp SQT                                    &none
-&magic 12 0     &Mouse 6 0    &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_COMMAND               &kp ENTER  &mo 8     &kp LC(LEFT_ALT)                           &Shortcuts  &Launchers LA(LEFT_GUI) 0  &BackDelete                    &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &TapHold LC(LG(LEFT_ALT)) LA(LC(LG(F24)))  &kp ESCAPE
+&magic 12 0     &Mouse 6 0    &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_COMMAND               &kp ENTER  &mo 8     &kp LC(LEFT_ALT)                           &Shortcuts  &Launchers LA(LEFT_GUI) 0  &kp DELETE                     &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &TapHold LC(LG(LEFT_ALT)) LA(LC(LG(F24)))  &kp ESCAPE
             >;
         };
 
@@ -858,12 +858,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Arrows {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                                                  &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans          &kp UP_ARROW    &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans                                                                   &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                   &trans  &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                   &trans  &trans          &kp UP_ARROW    &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                   &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &kp DEL          &trans          &trans          &trans           &trans  &trans
             >;
         };
 
