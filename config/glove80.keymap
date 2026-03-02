@@ -836,12 +836,12 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Mouse {
             bindings = <
-&none  &none      &none         &none         &none                                                                                                &none              &none              &none             &none  &none
-&none  &none      &none         &none         &none         &none                                                                  &none           &none              &none              &none             &none  &none
-&none  &none      &none         &kp UP        &none         &kp PAGE_UP                                                            &msc SCRL_UP    &mkp LCLK          &mmv MOVE_Y(-600)  &mkp RCLK         &none  &none
-&none  &kp EQUAL  &kp LEFT      &kp DOWN      &kp RIGHT     &kp PAGE_DOWN                                                          &msc SCRL_DOWN  &mmv MOVE_X(-600)  &mmv MOVE_Y(600)   &mmv MOVE_X(600)  &none  &none
-&none  &none      &select_none  &select_line  &select_word  &none          &trans  &none  &trans  &none      &mo 8      &mo 7      &none           &mkp LCLK          &mkp MCLK          &mkp RCLK         &none  &none
-&none  &none      &trans        &extend_line  &trans                       &trans  &none  &none   &mkp MCLK  &mkp RCLK  &mkp LCLK                  &none              &none              &none             &none  &none
+&none  &none      &none         &none         &none                                                                                                     &none              &none              &none             &none  &none
+&none  &none      &none         &none         &none         &none                                                                       &none           &none              &none              &none             &none  &none
+&none  &none      &none         &kp UP        &none         &kp PAGE_UP                                                                 &msc SCRL_UP    &mkp LCLK          &mmv MOVE_Y(-600)  &mkp RCLK         &none  &none
+&none  &kp EQUAL  &kp LEFT      &kp DOWN      &kp RIGHT     &kp PAGE_DOWN                                                               &msc SCRL_DOWN  &mmv MOVE_X(-600)  &mmv MOVE_Y(600)   &mmv MOVE_X(600)  &none  &none
+&none  &none      &select_none  &select_line  &select_word  &none          &mkp MB4  &mkp MB5  &trans  &none      &mo 8      &mo 7      &none           &mkp LCLK          &mkp MCLK          &mkp RCLK         &none  &none
+&none  &none      &trans        &extend_line  &trans                       &trans    &none     &none   &mkp MCLK  &mkp RCLK  &mkp LCLK                  &none              &none              &none             &none  &none
             >;
         };
 
@@ -858,23 +858,23 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
         Arrows {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                                                  &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans          &kp UP_ARROW    &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans                                                                           &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                           &trans  &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                           &trans  &trans          &kp UP_ARROW    &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                           &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans  &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &mo 6           &trans  &trans  &trans  &mkp MCLK  &mkp RCLK  &mkp LCLK          &trans          &trans          &trans           &trans  &trans
             >;
         };
 
         Shortcuts {
             bindings = <
-&trans  &trans  &trans     &trans       &trans                                                                          &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans       &trans      &trans                                                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans       &trans      &trans                                                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans       &trans      &trans                                                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp K_CUT  &kp K_PASTE  &kp K_COPY  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans       &trans              &trans  &trans  &trans  &trans  &trans  &kp ESCAPE          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans       &trans                                                                            &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans       &trans      &trans                                                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans       &trans      &trans                                                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans       &trans      &trans                                                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp K_CUT  &kp K_PASTE  &kp K_COPY  &trans  &trans  &trans  &trans  &trans  &mkp MB5  &mkp MB4    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans       &trans              &trans  &trans  &trans  &trans  &trans    &kp ESCAPE          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
