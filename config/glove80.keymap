@@ -1,4 +1,12 @@
 /*
+ * Graphite update - 2026-10-28
+ * Caps Word / Shift+Caps Lock; hold-to-slow/fast mouse; KEYS host shortcut.
+ * Graphite letter positions and existing thumb bindings are preserved.
+ * Requires the original build's underglow-layer support plus input processors
+ * with zip_xy_scaler/zip_scroll_scaler (MoErgo 25.04+ or a compatible fork).
+ * See README.md for physical keys, host binding, and validation limitations.
+ */
+/*
  * Glove 80 Keymap
  *
  * Contents:
@@ -18,29 +26,69 @@
 *  1. Includes
 *********************/
 
-#include <dt-bindings/zmk/rgb_colors.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
 #include <dt-bindings/zmk/rgb.h>
 
 /************
 *  2. Layer Defninitons
 *********************/
 
-#define DEFAULT      0
-#define QWERTY       1
-#define NUMBERS      2
-#define SYMBOLS      3
-#define CONTENT      4
-#define NVIM         5
-#define MOUSE        6
-#define SHORTCUTS    7
-#define SHORTCUTS_2  8
-#define SYSTEM       9
-#define MAGIC       10
+#define DEFAULT        0
+#define QWERTY         1
+#define NUMBERS        2
+#define SYMBOLS        3
+#define CONTENT        4
+#define NVIM           5
+#define MOUSE          6
+#define MOUSE_SCROLL   7
+#define ARROWS         8
+#define SHORTCUTS      9
+#define SHORTCUTS_2    10
+#define SYSTEM         11
+#define MAGIC          12
+#define GAMING         13
+#define MOUSE_SLOW     14
+#define MOUSE_FAST     15
+
+/* Mouse scaling: multiplier / divisor. Slow wins if both keys are held.
+ * Pointer: normal 1x, slow 1/4x, fast 3x.
+ * Scroll: normal 1x, slow 1/2x, fast 2x; horizontal scroll is scaled too.
+ */
+#define POINTER_SLOW_MULT 1
+#define POINTER_SLOW_DIV  4
+#define POINTER_FAST_MULT 3
+#define POINTER_FAST_DIV  1
+#define SCROLL_SLOW_MULT  1
+#define SCROLL_SLOW_DIV   2
+#define SCROLL_FAST_MULT  2
+#define SCROLL_FAST_DIV   1
+
+&mmv_input_listener {
+    graphite_precision {
+        layers = <MOUSE_SLOW>;
+        input-processors = <&zip_xy_scaler POINTER_SLOW_MULT POINTER_SLOW_DIV>;
+    };
+    graphite_fast {
+        layers = <MOUSE_FAST>;
+        input-processors = <&zip_xy_scaler POINTER_FAST_MULT POINTER_FAST_DIV>;
+    };
+};
+
+&msc_input_listener {
+    graphite_precision {
+        layers = <MOUSE_SLOW>;
+        input-processors = <&zip_scroll_scaler SCROLL_SLOW_MULT SCROLL_SLOW_DIV>;
+    };
+    graphite_fast {
+        layers = <MOUSE_FAST>;
+        input-processors = <&zip_scroll_scaler SCROLL_FAST_MULT SCROLL_FAST_DIV>;
+    };
+};
 
 /************
 * 3. Shortcut Defninitons
@@ -52,6 +100,7 @@
 * 4. Color Definitions
 *********************/
 
+#define COLOR_BLACK        0x000000
 #define COLOR_WHITE        0xFFFFFF
 #define COLOR_SKY_BLUE     0x66B3FF
 #define COLOR_DEEP_BLUE    0x005F99
@@ -68,8 +117,8 @@
 * 5. Layer Colors
 *********************/
 
-#define ______  &ug BLACK
-#define _DFLT_  &ug BLACK
+#define ______  &ug COLOR_BLACK
+#define _DFLT_  &ug COLOR_BLACK
 #define _QWTY_  &ug COLOR_WHITE
 #define _NMBR_  &ug COLOR_SKY_BLUE
 #define _SYMB_  &ug COLOR_DEEP_BLUE
@@ -235,6 +284,30 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
             layer-id = <SYSTEM>;
         };
+
+        mouse_slow {
+            bindings = <
+                ______  ______  ______  &ug COLOR_LIGHT_BLUE  ______  ______  &ug COLOR_LIGHT_BLUE  ______  ______  ______
+                ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______
+                ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______
+                ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______
+                ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______
+                ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______
+            >;
+            layer-id = <MOUSE_SLOW>;
+        };
+
+        mouse_fast {
+            bindings = <
+                ______  ______  ______  &ug COLOR_ORANGE  ______  ______  &ug COLOR_ORANGE  ______  ______  ______
+                ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______
+                ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______
+                ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______
+                ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______
+                ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______  ______
+            >;
+            layer-id = <MOUSE_FAST>;
+        };
     };
 };
 
@@ -244,6 +317,16 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 
 / {
     behaviors {
+
+        // Tap: Caps Word. Hold either Shift and tap: ordinary Caps Lock.
+        GraphiteCaps: graphite_caps {
+            compatible = "zmk,behavior-mod-morph";
+            label = "GRAPHITE_CAPS";
+            #binding-cells = <0>;
+            bindings = <&caps_word>, <&kp CAPSLOCK>;
+            mods = <(MOD_LSFT | MOD_RSFT)>;
+        };
+
         /*****
     /* 7a. Keypairs
     /**********/
@@ -359,7 +442,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-tap-dance";
             label = "SHORTCUTS";
             #binding-cells = <0>;
-            bindings = <&kp LC(LG(LEFT_ALT))>, <&mo 10>, <&mo 11>;
+            bindings = <&kp LC(LG(LEFT_ALT))>, <&mo SHORTCUTS_2>, <&mo SYSTEM>;
 
             tapping-term-ms = <400>;
         };
@@ -368,21 +451,21 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-tap-dance";
             label = "CONTENT";
             #binding-cells = <0>;
-            bindings = <&mo 4>, <&mo 5>;
+            bindings = <&mo CONTENT>, <&mo NVIM>;
         };
 
         Numbers: Numbers {
             compatible = "zmk,behavior-tap-dance";
             label = "NUMBERS";
             #binding-cells = <0>;
-            bindings = <&mo 2>, <&tog 2>;
+            bindings = <&mo NUMBERS>, <&tog NUMBERS>;
         };
 
         Symbols: Symbols {
             compatible = "zmk,behavior-tap-dance";
             label = "SYMBOLS";
             #binding-cells = <0>;
-            bindings = <&mo 3>, <&tog 3>;
+            bindings = <&mo SYMBOLS>, <&tog SYMBOLS>;
         };
 
         /******
@@ -497,7 +580,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "SELECT_WORD_RIGHT";
-            bindings = <&kp LG(RIGHT) &kp LG(LEFT) &kp LS(LG(RIGHT))>;
+            bindings = <&kp LA(RIGHT) &kp LA(LEFT) &kp LS(LA(RIGHT))>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
@@ -508,7 +591,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "SELECT_WORD_LEFT";
-            bindings = <&kp LG(LEFT) &kp LG(RIGHT) &kp LS(LG(LEFT))>;
+            bindings = <&kp LA(LEFT) &kp LA(RIGHT) &kp LS(LA(LEFT))>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
@@ -529,7 +612,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "EXTEND_WORD_RIGHT";
-            bindings = <&kp LS(LG(RIGHT))>;
+            bindings = <&kp LS(LA(RIGHT))>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
@@ -540,7 +623,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "EXTEND_WORD_LEFT";
-            bindings = <&kp LS(LG(LEFT))>;
+            bindings = <&kp LS(LA(LEFT))>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
@@ -561,7 +644,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "SELECT_LINE_RIGHT";
-            bindings = <&kp HOME &kp LS(END)>;
+            bindings = <&kp LG(LEFT) &kp LS(LG(RIGHT))>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
@@ -572,7 +655,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "SELECT_LINE_LEFT";
-            bindings = <&kp END &kp LS(HOME)>;
+            bindings = <&kp LG(RIGHT) &kp LS(LG(LEFT))>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
@@ -603,7 +686,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "EXTEND_LINE_RIGHT";
-            bindings = <&kp LS(DOWN) &kp LS(END)>;
+            bindings = <&kp LS(DOWN) &kp LS(LG(RIGHT))>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
@@ -614,7 +697,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "EXTEND_LINE_LEFT";
-            bindings = <&kp LS(UP) &kp LS(HOME)>;
+            bindings = <&kp LS(UP) &kp LS(LG(LEFT))>;
             wait-ms = <SELECT_WORD_DELAY>;
             tap-ms = <SELECT_WORD_DELAY>;
         };
@@ -715,7 +798,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         MousLessClick: MousLessClick {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            bindings = <&to DEFAULT &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "MOUSLESSCLICK";
         };
 
@@ -771,11 +854,11 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
         Typing-Graphite {
             bindings = <
 &WildCard F1    &WildCard F2  &WildCard F14     &WildCard F15  &WildCard F16                                                                                                                                                    &WildCard F17      &WildCard F18  &WildCard F19      &WildCard F9                               &WildCard F10
-&kp GRAVE       &KeySlash     &KeySquare        &KeyBrace      &KeyBrackets      &KeyCompare                                                                                                                     &kp GRAVE      &kp MINUS          &kp EQUAL      &KeySlash          &kp PIPE                                   &none
-&kp CAPSLOCK    &kp B         &kp L             &kp D          &kp W             &kp Z                                                                                                                           &kp K          &kp F              &kp O          &kp U              &kp J                                      &kp ESCAPE
-&Mouse 6 0      &kp N         &kp R             &kp T          &kp S             &kp G                                                                                                                           &kp Y          &kp H              &kp A          &kp E              &kp I                                      &kp TAB
+&kp GRAVE       &KeySlash     &KeySquare        &KeyBrace      &KeyBrackets      &KeyCompare                                                                                                                     &kp GRAVE      &kp MINUS          &kp EQUAL      &KeySlash          &kp PIPE                                   &kp LC(LA(LG(LS(F13))))
+&GraphiteCaps    &kp B         &kp L             &kp D          &kp W             &kp Z                                                                                                                           &kp K          &kp F              &kp O          &kp U              &kp J                                      &kp ESCAPE
+&Mouse MOUSE 0      &kp N         &kp R             &kp T          &kp S             &kp G                                                                                                                           &kp Y          &kp H              &kp A          &kp E              &kp I                                      &kp TAB
 &kp LEFT_SHIFT  &kp Q         &kp X             &kp M          &kp C             &kp V        &kp SPACE  &Numbers          &TapHold LC(LG(LEFT_ALT)) LA(LC(LG(F20)))  &Content        &Symbols   &kp LEFT_SHIFT  &kp SEMICOLON  &kp P              &Com_Ques      &Dot_Exlcaim       &kp SQT                                    &kp DEL
-&magic 12 0     &Mouse 6 0    &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_COMMAND               &mo 8      &kp LEFT_COMMAND  &kp LC(LEFT_ALT)                           &Launchers 0 0  &kp ENTER  &kp BACKSPACE                  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &TapHold LC(LG(LEFT_ALT)) LA(LC(LG(F24)))  &kp ESCAPE
+&magic MAGIC 0     &Mouse MOUSE 0    &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LEFT_COMMAND               &mo ARROWS      &kp LEFT_COMMAND  &kp LC(LEFT_ALT)                           &Launchers 0 0  &kp ENTER  &kp BACKSPACE                  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &TapHold LC(LG(LEFT_ALT)) LA(LC(LG(F24)))  &kp ESCAPE
             >;
         };
 
@@ -819,7 +902,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &trans  &trans        &trans     &extend_line  &extend_word  &trans                                                         &kp LG(Z)  &kp PAGE_UP    &kp LG(EQUAL)  &kp HOME       &trans  &trans
 &trans  &select_none  &kp LG(A)  &select_line  &select_word  &trans                                                         &kp LG(Y)  &kp PAGE_DOWN  &kp LG(N0)     &kp END        &trans  &trans
 &trans  &trans        &kp LG(X)  &kp LG(C)     &kp LG(V)     &kp LG(LS(V))  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans         &kp LG(MINUS)  &trans         &trans  &trans
-&trans  &trans        &trans     &trans        &trans                       &trans  &mo 5   &trans  &trans  &trans  &trans             &trans         &trans         &trans         &trans  &trans
+&trans  &trans        &trans     &trans        &trans                       &trans  &mo NVIM   &trans  &trans  &trans  &trans             &trans         &trans         &trans         &trans  &trans
             >;
         };
 
@@ -838,9 +921,9 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
             bindings = <
 &none  &none      &none         &none         &none                                                                                                     &none              &none              &none             &none  &none
 &none  &none      &none         &none         &none         &none                                                                       &none           &none              &none              &none             &none  &none
-&none  &none      &none         &kp UP        &none         &kp PAGE_UP                                                                 &msc SCRL_UP    &mkp LCLK          &mmv MOVE_Y(-600)  &mkp RCLK         &none  &none
+&none  &mo MOUSE_SLOW      &mo MOUSE_FAST         &kp UP        &none         &kp PAGE_UP                                                                 &msc SCRL_UP    &mkp LCLK          &mmv MOVE_Y(-600)  &mkp RCLK         &none  &none
 &none  &kp EQUAL  &kp LEFT      &kp DOWN      &kp RIGHT     &kp PAGE_DOWN                                                               &msc SCRL_DOWN  &mmv MOVE_X(-600)  &mmv MOVE_Y(600)   &mmv MOVE_X(600)  &none  &none
-&none  &none      &select_none  &select_line  &select_word  &none          &mkp MB4  &mkp MB5  &trans  &none      &mo 8      &mo 7      &none           &mkp LCLK          &mkp MCLK          &mkp RCLK         &none  &none
+&none  &none      &select_none  &select_line  &select_word  &none          &mkp MB4  &mkp MB5  &trans  &none      &mo ARROWS      &mo MOUSE_SCROLL      &none           &mkp LCLK          &mkp MCLK          &mkp RCLK         &none  &none
 &none  &none      &trans        &extend_line  &trans                       &trans    &none     &none   &mkp MCLK  &mkp RCLK  &mkp LCLK                  &none              &none              &none             &none  &none
             >;
         };
@@ -851,7 +934,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans          &trans          &trans           &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans          &msc SCRL_UP    &trans           &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &mo 7   &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &mo MOUSE_SCROLL   &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans           &trans  &trans
 &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans          &trans           &trans  &trans
             >;
         };
@@ -863,7 +946,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &trans  &trans  &trans  &trans  &trans  &trans                                                           &trans  &trans          &kp UP_ARROW    &trans           &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                                                           &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans  &trans          &trans          &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &mo 6           &trans  &trans  &trans  &mkp MCLK  &mkp RCLK  &mkp LCLK          &trans          &trans          &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &mo MOUSE           &trans  &trans  &trans  &mkp MCLK  &mkp RCLK  &mkp LCLK          &trans          &trans          &trans           &trans  &trans
             >;
         };
 
@@ -895,8 +978,8 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &trans        &none         &none           &none           &none            &kp HOME                                                   &kp LEFT_PARENTHESIS   &kp KP_NUM  &kp KP_EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PRINTSCREEN
 &trans        &none         &none           &kp UP_ARROW    &none            &kp END                                                    &kp RIGHT_PARENTHESIS  &kp KP_N7   &kp KP_N8     &kp KP_N9     &kp KP_MINUS     &kp SCROLLLOCK
 &trans        &none         &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_UP                                                  &kp PERCENT            &kp KP_N4   &kp KP_N5     &kp KP_N6     &kp KP_PLUS      &none
-&trans        &kp K_APP     &none           &kp F11         &kp F12          &kp PG_DN  &trans  &trans  &to 0   &trans  &trans  &trans  &kp COMMA              &kp KP_N1   &kp KP_N2     &kp KP_N3     &kp KP_ENTER     &trans
-&magic 0 0    &kp CAPS      &kp INS         &kp F11         &kp F12                     &trans  &trans  &trans  &trans  &trans  &trans                         &kp KP_N0   &kp KP_N0     &kp KP_DOT    &kp KP_ENTER     &trans
+&trans        &kp K_APP     &none           &kp F11         &kp F12          &kp PG_DN  &trans  &trans  &to DEFAULT   &trans  &trans  &trans  &kp COMMA              &kp KP_N1   &kp KP_N2     &kp KP_N3     &kp KP_ENTER     &trans
+&magic DEFAULT 0    &kp CAPS      &kp INS         &kp F11         &kp F12                     &trans  &trans  &trans  &trans  &trans  &trans                         &kp KP_N0   &kp KP_N0     &kp KP_DOT    &kp KP_ENTER     &trans
             >;
         };
 
@@ -905,7 +988,7 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &bt BT_CLR   &none            &none            &none            &studio_unlock                                                                            &none        &none  &none  &none  &bt BT_CLR_ALL
 &none        &none            &none            &none            &none            &none                                                             &none  &none        &none  &none  &none  &none
 &trans       &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                   &none  &none        &none  &none  &none  &none
-&bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                   &none  &tog 13      &none  &none  &none  &bootloader
+&bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                   &none  &tog GAMING      &none  &none  &none  &bootloader
 &sys_reset   &none            &none            &none            &none            &none            &bt_2  &bt_3  &none         &none  &none  &none  &none  &none        &none  &none  &none  &sys_reset
 &none        &none            &none            &none            &bootloader                       &bt_0  &bt_1  &out OUT_USB  &none  &none  &none         &bootloader  &none  &none  &none  &none
             >;
@@ -919,6 +1002,30 @@ ______ ______ ______ ______ ______        ______ ______ ______            ______
 &kp T    &kp TAB    &kp Q   &kp W   &kp E     &kp R                                                                               &kp H   &kp J      &kp K      &kp L     &kp SEMI   &kp APOS
 &kp G    &kp LSHFT  &kp A   &kp S   &kp D     &kp F   &kp LSHFT  &kp LALT   &kp ENTER  &kp ESC         &kp UP_ARROW    &kp ENTER  &kp N   &kp M      &kp COMMA  &kp DOT   &kp FSLH   &kp BSLH
 &kp B    &kp LCTRL  &kp Z   &kp X   &kp C             &kp SPACE  &kp LCTRL  &kp V      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT          &kp MINUS  &kp LBKT   &kp RBKT  &kp EQUAL  &kp GRAVE
+            >;
+        };
+
+        // Speed-only overlay; existing mouse/scroll/arrows/buttons pass through.
+        MouseSlow {
+            bindings = <
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        // Speed-only overlay; existing mouse/scroll/arrows/buttons pass through.
+        MouseFast {
+            bindings = <
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
