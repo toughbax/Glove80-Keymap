@@ -1,0 +1,24 @@
+# West build (replaces the Nix build on this branch). Every project is pinned to a commit.
+manifest:
+  remotes:
+    - name: darknao
+      url-base: https://github.com/darknao
+    - name: ovandongen
+      url-base: https://github.com/ovandongen
+  projects:
+    # MoErgo ZMK main (v26.09 era) + per-layer underglow (underglow-layer, &ug), branch rgb-layer-24.12
+    - name: zmk
+      remote: darknao
+      revision: 22d6941d055bf05f006c9d4d7088e9564d31ba3a
+      import: app/west.yml
+    # Raw HID endpoint (usage page 0xFF60, usage 0x61); ovandongen's copy of zzeneg/zmk-raw-hid
+    # adds the static HID report buffer fix
+    - name: zmk-raw-hid
+      remote: ovandongen
+      revision: 35d3b77f2022f774d856450e2951b094a831fb38
+    # Layer-state reports to the host, and host commands to change layer
+    - name: zmk-hid-viz
+      remote: ovandongen
+      revision: 6a28994f93aac00d32200ed975ec441736e7d98f
+  self:
+    path: config

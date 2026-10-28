@@ -1,0 +1,5 @@
+# Raw HID only on the left (central) half, the one that talks to the computer
+include:
+  - board: glove80_lh
+    shield: raw_hid_adapter
+  - board: glove80_rh
